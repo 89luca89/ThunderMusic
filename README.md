@@ -1,5 +1,5 @@
 # THUNDER MUSIC  
-Thunder Music is a powerful yet lightweight Material music player for Android for online content consumption.  
+Thunder Music is a powerful yet lightweight Material music player for Android, with an emphasis on online content consumption.  
   
 Right now the app supports:  
 - Shoutcast (Over 50000 stations)  
