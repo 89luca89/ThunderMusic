@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shadown_topdown" />
+
+    <TextView
+        android:id="@+id/nointernet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-light"
+        android:padding="16dip"
+        android:text="@string/no_internet_available"
+        android:visibility="gone" />
+
+    <com.luca89.views.TouchInterceptor
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/nointernet"
+        android:animationCache="false"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dip"
+        android:drawSelectorOnTop="true"
+        android:fastScrollEnabled="true"
+        android:listSelector="@color/transparent"
+        android:paddingTop="8dip"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true"
+        android:textSize="18sp" />
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shadown_downtop" />
+
+    <com.melnykov.fab.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/FAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/musicbar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/FAB_margin_bottom_small"
+        android:layout_marginLeft="@dimen/FAB_margin_left"
+        android:layout_marginRight="@dimen/FAB_margin_right"
+        android:layout_marginTop="@dimen/FAB_margin_top"
+        android:animateLayoutChanges="false"
+        android:visibility="gone"
+        app:fab_type="normal" />
+
+</RelativeLayout>

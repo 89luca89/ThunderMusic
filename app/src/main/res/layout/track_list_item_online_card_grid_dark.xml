@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="120dip"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/padding_item_right"
+    android:paddingRight="@dimen/padding_item_list">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/card_dark"
+        android:paddingLeft="12dip">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/item_height"
+            android:layout_height="@dimen/item_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="4dip"
+            android:layout_marginRight="@dimen/icon_margin"
+            android:layout_marginTop="4dip"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/menu_button"
+            android:layout_width="65dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:paddingRight="@dimen/padding_item"
+            android:scaleType="centerInside" />
+
+
+        <TextView
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_toLeftOf="@+id/menu_button"
+            android:layout_toRightOf="@id/icon"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:lines="2"
+            android:paddingTop="8dip"
+            android:singleLine="false"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@id/line1"
+            android:layout_toLeftOf="@+id/menu_button"
+            android:layout_toRightOf="@id/icon"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@id/line2"
+            android:layout_toLeftOf="@+id/line4"
+            android:layout_toRightOf="@id/icon"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/line4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@id/line2"
+            android:layout_toLeftOf="@+id/menu_button"
+            android:fontFamily="sans-serif-light"
+            android:paddingBottom="8dip"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/play_indicator"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/padding_item"
+            android:layout_toLeftOf="@+id/menu_button" />
+
+    </RelativeLayout>
+</RelativeLayout>

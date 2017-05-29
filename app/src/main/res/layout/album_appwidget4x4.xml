@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card_dark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/albumart"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/controls_info_divider"
+            android:background="@drawable/card_dark"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/trackname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:paddingLeft="4dip"
+                android:paddingRight="4dip"
+                android:paddingTop="4dip"
+                android:singleLine="true"
+                android:textColor="#FFFFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/albumname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:padding="4dip"
+                android:singleLine="true"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/controls_info_divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dip"
+            android:layout_alignBottom="@+id/albumart"
+            android:background="@android:color/darker_gray"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="60dip">
+
+        <ImageButton
+            android:id="@+id/control_repeat"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_mp_repeat_off_btn" />
+
+        <ImageButton
+            android:id="@+id/control_prev"
+            style="@android:style/MediaButton.Rew"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center" />
+
+        <ImageButton
+            android:id="@+id/control_play"
+            style="@android:style/MediaButton.Play"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center" />
+
+        <ImageButton
+            android:id="@+id/control_next"
+            style="@android:style/MediaButton.Ffwd"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center" />
+
+        <ImageButton
+            android:id="@+id/control_shuffle"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_mp_shuffle_off_btn"></ImageButton>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/normal_height"
+    android:gravity="center_vertical"
+    android:ignoreGravity="@+id/icon"
+    android:paddingLeft="@dimen/padding_item"
+    android:paddingRight="@dimen/padding_item_right">
+
+    <include layout="@layout/track_list_item_common" />
+
+</RelativeLayout>

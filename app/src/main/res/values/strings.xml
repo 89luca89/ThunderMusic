@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!--
+    This string is used as the format string in a String.format call,
+    and 5 additional arguments are available for printing:
+    1 - hours
+    2 - minutes
+    3 - minutes%60
+    4 - seconds
+    5 - second%60
+    -->
+    <skip />
+    <!-- Do not translate. Duration format for duration < 1 hour -->
+    <string name="durationformatshort" translatable="false"><xliff:g id="format">%2$d:%5$02d</xliff:g></string>
+    <!-- Do not translate. Duration format for duration >= 1 hour -->
+    <string name="durationformatlong" translatable="false"><xliff:g id="format">%1$d:%3$02d:%5$02d</xliff:g></string>
+
+    <!-- Delete confirmation dialog, confirmation button text -->
+    <string name="delete_confirm_button_text">OK</string>
+    <string name="cancel">Cancel</string>
+    <!-- Toast confirming that song(s) was/were deleted. -->
+    <plurals name="NNNtracksdeleted">
+
+        <!-- delete confirmation message for 1 song -->
+        <item quantity="one">1 song was deleted.</item>
+        <!-- delete confirmation message for 0 or more than 1 songs -->
+        <item quantity="other"><xliff:g id="songs_to_delete">%d</xliff:g> songs were deleted.</item>
+    </plurals>
+
+    <!-- title of the "current playlist" screen when not in party shuffle mode -->
+    <string name="nowplaying_title">Now playing</string>
+    <!-- title of the "current playlist" screen when in party shuffle mode -->
+
+    <!-- shown when connecting to a music stream, before it starts playing -->
+    <string name="streamloadingtext">Connecting to <xliff:g id="host">%s</xliff:g>\u2026</string>
+    <!-- Library screen, menu item -->
+    <string name="search_title">Search</string>
+    <!-- Playlist context menu item to delete the selected playlist. -->
+    <string name="delete_playlist_menu">Delete</string>
+    <!-- Playlist context menu item to edit the selected playlist -->
+    <string name="edit_playlist_menu">Edit</string>
+    <!-- Playlist context menu item to rename the selected playlist -->
+    <string name="rename_playlist_menu">Rename</string>
+    <!-- Transient popup message shown after deleting a playlist -->
+    <string name="playlist_deleted_message">Playlist deleted.</string>
+    <!-- Transient popup message shown after renaming a playlist -->
+    <string name="playlist_renamed_message">Playlist renamed.</string>
+    <!-- The name of the pseudo-playlist that holds all the recently added files, shown in list view -->
+    <string name="sdcard_missing_title">No SD card</string>
+    <!-- Title of screen when no sd card is present -->
+    <string name="sdcard_missing_title_nosdcard">No USB storage</string>
+    <!-- label underneath icon used to indicate that the sd card is present, but currently unavailable -->
+    <string name="sdcard_busy_title">SD card unavailable</string>
+    <!-- label underneath icon used to indicate that the sd card is present, but currently unavailable -->
+    <string name="sdcard_busy_title_nosdcard">USB storage unavailable</string>
+    <!-- Default name of artist that doesn't have a name in the metadata -->
+    <string name="unknown_artist_name">Unknown artist</string>
+    <!-- Default name of album that doesn't have a name in the metadata -->
+    <string name="unknown_album_name">Unknown album</string>
+    <!-- Default name of album that doesn't have a name in the metadata -->
+    <string name="shuffle_on_notif">Shuffle is on.</string>
+    <!-- Toast after turning shuffle off -->
+    <string name="shuffle_off_notif">Shuffle is off.</string>
+    <!-- Toast after turning repeat off -->
+    <string name="repeat_off_notif">Repeat is off.</string>
+    <!-- Toast after turning single repeat on -->
+    <string name="repeat_current_notif">Repeating current song.</string>
+    <!-- Toast after turning repeat all on -->
+    <string name="repeat_all_notif">Repeating all songs.</string>
+    <!-- Individual song context menu item -->
+    <string name="share_menu">Share</string>
+    <!-- Individual song context menu item -->
+    <!-- Menu item -->
+    <string name="exit_menu">Exit</string>
+    <!-- Menu item -->
+    <string name="about_menu_short">About</string>
+    <!-- Menu item -->
+    <string name="carmode_menu_short">Car Mode</string>
+    <!-- Menu item -->
+    <string name="search_soundcloud_menu_short">Buy On soundcloud</string>
+    <!-- Menu item -->
+    <string name="search_internet_menu_short">Search Online</string>
+    <!-- Menu item -->
+    <string name="search_lyrics_menu_short">Search Lyrics Online</string>
+    <!-- Menu item -->
+    <string name="searching_lyrics">Searching Lyrics for</string>
+    <!-- Menu item -->
+    <string name="searching_lyrics2">From</string>
+    <!-- Menu item -->
+    <string name="no_result_lyrics">No result found for</string>
+    <!-- Menu item -->
+    <string name="no_internet_available">No internet connection.\nPlease check your connection.</string>
+    <!-- Context menu item -->
+    <string name="play_selection">Play</string>
+    <string name="pause_selection">Pause</string>
+    <string name="next_selection">Next</string>
+    <string name="prev_selection">Previous</string>
+    <!-- Context menu item -->
+    <string name="add_to_playlist">Add to playlist</string>
+    <!-- Context menu item -->
+    <string name="queue">Current playlist</string>
+    <!-- Context menu item -->
+    <string name="new_playlist">New</string>
+    <!-- Template for newly created playlist name -->
+    <string name="new_playlist_name_template">New playlist <xliff:g id="number">%d</xliff:g></string>
+    <!-- Toasts after adding song(s) to playlists -->
+    <plurals name="NNNtrackstoplaylist">
+
+        <!-- message shown when one song was added -->
+        <item quantity="one">1 song added to playlist.</item>
+        <!-- message shown when zero or more than one song was added -->
+        <item quantity="other"><xliff:g example="27" id="number">%d</xliff:g> songs added to playlist.</item>
+    </plurals>
+    <!-- Toast after selecting an empty playlist -->
+    <string name="emptyplaylist">Selected playlist is empty.</string>
+    <!-- Button name when saving a playlist -->
+    <string name="create_playlist_create_text">Save</string>
+    <!-- Button name when saving a playlist and the new playlist will overwrite an existing one -->
+    <string name="create_playlist_overwrite_text">Overwrite</string>
+    <!-- Dialog box title -->
+    <string name="service_start_error_title">Playback problem</string>
+    <!-- Dialog box message -->
+    <string name="service_start_error_msg">Sorry, the song could not be played.</string>
+    <!-- Dialog box button -->
+    <string name="service_start_error_button">OK</string>
+
+    <!-- Title of time span picker -->
+    <string name="weekpicker_title">Set time</string>
+    <!-- menu item to save the current list as a new playlist -->
+    <string name="save_as_playlist">Save as playlist</string>
+    <!-- menu item to clear the current playlist -->
+    <string name="clear_playlist">Clear playlist</string>
+
+    <!-- Activity label. This might show up in the activity-picker -->
+    <string name="musicbrowserlabel">Thunder Music</string>
+    <!-- Shown as a transient message whenever a file fails to play -->
+    <string name="playback_failed">Sorry, the player does not support this type of audio file.</string>
+
+    <!-- context menu item to remove the selected item from the playlist -->
+    <string name="remove_from_playlist">Remove from playlist</string>
+
+    <!-- Shown in the search box as a hint -->
+    <string name="search_hint">Search Music</string>
+    <!-- Text shown on widget when first loaded -->
+    <string name="widget_initial_text">Touch to select music.</string>
+    <!-- Menu text for the item controlling the audio effects panel [CHAR LIMIT=15] -->
+    <string name="effectspanel">Sound effects</string>
+
+    <!-- HERE STARTS TO LOCALIZE -->
+
+
+    <!-- Menu item -->
+    <string name="use_idle_timeout_title">Enable Timeout</string>
+    <string name="use_idle_timeout_summary">When active, playback will be stopped after the given period of inactivity</string>
+    <string name="idle_timeout_title">Playback Timeout</string>
+    <!-- Preferences -->
+    <plurals name="minutes">
+        <item quantity="one">1 minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">1 hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
+    <!-- Settings title -->
+    <string name="settings">Settings</string>
+    <string name="ui_settings">UI Settings</string>
+    <string name="behaviour_settings">Behaviour Settings</string>
+    <string name="headset_settings">Headset Settings</string>
+    <string name="misc_settings">Miscellaneous</string>
+    <string name="ui_lockscreen">Lockscreen Settings</string>
+    <string name="notification_settings">Notification Settings</string>
+
+    <!-- Setting for Transient duck attenuation -->
+    <string name="duck_attenuation_title">Audio focus loss action</string>
+    <string name="duck_attenuation_summary">Select action to take upon transient loss of audio focus (short alerts from other apps).\nThis may not work on some manufacturer roms, for example lg and samsung.</string>
+    <string name="stay_on_title">Keep Screen On</string>
+    <string name="stay_on_summary">Always keep screen on when in NowPlaying Screen</string>
+    <string name="use_as_lock_title">Use Custom Lockscreen</string>
+    <string name="aosp_lock_title">Use Android Lockscreen</string>
+    <string name="aosp_lock_summary">When Playing Stock android Lockscreen Music Controls will be used</string>
+    <string name="use_as_lock_summary">Use a Custom Lockscreen when playing music.</string>
+    <string name="use_as_lock_main_title">Direct Unlock</string>
+    <string name="lock_main_title">Swipe Up to Unlock</string>
+    <string name="use_as_lock_main_summary">Use The Custom lockscreen as main Lockscreen when playing music.</string>
+    <string name="smart_lock_title">Smart Lockscreen</string>
+    <string name="smart_lock_summary">Prevent accidental unlocks and button press disabling them in the pocket!\nAlso will bring brightness down to minimize battery use when using volume controls in pocket!</string>
+    <string name="pref_shake">Accelerometer Settings</string>
+    <string name="enable_shake_title">Enable Shake</string>
+    <string name="enable_flip_title">Enable Flip</string>
+    <string name="shake_from_paused_summary">Enable Shake Even when music is Paused</string>
+    <string name="shake_from_paused_title">Enable Shake when not playing</string>
+    <string name="enable_flip_summary">Flip phone to Play/Pause music\nDoes not work when screen is off on some devices.</string>
+    <string name="enable_shake_summary">Shake the phone to perform an action\nOnly active when music is playing\nDoes not work when screen is off on some devices.</string>
+    <string name="shake_action_title">Shake Action</string>
+    <string name="shake_threshold_title">Accelerometer Sensibility</string>
+
+    <!-- Setting for auto-unpause when headset is plugged in -->
+    <string name="single_click_title">Single Click Action</string>
+    <string name="double_click_title">Double Click Action</string>
+    <string name="triple_click_title">Triple Click Action</string>
+    <string name="four_click_action_title">Four Click Action</string>
+    <string name="headsethook_title">Enable Headset Buttons</string>
+    <string name="headsethook__summary">Use single, double and triple clicks to control music.</string>
+    <string name="four_click_title">Enable 4 Click Action</string>
+    <string name="four_click_summary">Use also 4 clicks to control music.</string>
+    <string name="unpause_on_headset_plug_title">Unpause on connect</string>
+    <string name="unpause_on_headset_plug_summary">Unpause the player when a headset is connected (Works if service is in background)</string>
+    <string name="launch_on_headset_plug_title">Launch Player on connect</string>
+    <string name="launch_on_headset_plug_summary">Start the NowPlaying view when a headset is connected (Works if service is in background)</string>
+    <string name="longpress_to_skip_title">Volume Rocker Controls</string>
+    <string name="longpress_to_skip_summary">You can control music (next/prev) by longpressing on vol+/vol- when in Lock with Screen On</string>
+    <string name="notification_title">Notification Style</string>
+    <string name="notification_enable_title">Statusbar Notification</string>
+    <string name="notification_enable_summary">Enable or Disable Notification in notification shade</string>
+    <string name="popup_enable_title">Floating Notification</string>
+    <string name="popup_enable_summary">Enable or Disable Floating Notification on the screen</string>
+    <string name="theme_title">Theme</string>
+    <string name="custom_theme_title">Custom Color</string>
+    <string name="custom_theme_summary">If chosen the custom theme, you can choose which color you want to display</string>
+
+    <!-- Prompt in dialog when creating a playlist. The user will enter the name of the playlist in a textfield underneath this prompt. -->
+    <string name="create_playlist_create_text_prompt">Playlist name</string>
+    <!-- Prompt in dialog when renaming a playlist, used when the current name and the new name are the same. The user will enter the new name of the playlist in a textfield underneath this prompt. -->
+    <string name="rename_playlist_same_prompt">Rename \"<xliff:g id="playlist">%s</xliff:g>\" to</string>
+    <!-- Prompt in dialog when renaming a playlist, used when the current name the new name are different. The user will enter the new name of the playlist in a textfield underneath this prompt. -->
+    <string name="rename_playlist_diff_prompt">Rename \"<xliff:g id="playlist">%s</xliff:g>\" to</string>
+    <string name="current_color">Current color:	</string>
+
+    <string-array name="entries_duck_attenuation">
+        <item>Pause</item>
+        <item>Nothing</item>
+        <item>Volume -3 dB</item>
+        <item>Volume -6 dB</item>
+        <item>Volume -10 dB</item>
+        <item>Volume -15 dB</item>
+    </string-array>
+    <string-array name="entries_theme_screen">
+        <item>Black Theme</item>
+        <item>Thunder Music Dark</item>
+        <item>Thunder Music Light</item>
+        <item>Custom Color Light Theme</item>
+        <item>Custom Color Dark Theme</item>
+    </string-array>
+    <string-array name="entries_notification">
+        <item>Expanded View</item>
+        <item>Compact Notification</item>
+    </string-array>
+    <string-array name="weeklist">
+        <item>"1 week"</item>
+        <item>"2 weeks"</item>
+        <item>"3 weeks"</item>
+        <item>"4 weeks"</item>
+        <item>"5 weeks"</item>
+        <item>"6 weeks"</item>
+        <item>"7 weeks"</item>
+        <item>"8 weeks"</item>
+        <item>"9 weeks"</item>
+        <item>"10 weeks"</item>
+        <item>"11 weeks"</item>
+        <item>"12 weeks"</item>
+    </string-array>
+    <string-array name="click_action_entries">
+        <item>Play/Pause Music</item>
+        <item>NextSong</item>
+        <item>PreviousSong</item>
+        <item>Shuffle Next</item>
+        <item>NextSong x2</item>
+        <item>PreviousSong x2</item>
+        <item>Seek (+30sec)</item>
+        <item>Seek (+60sec)</item>
+        <item>Seek (-30sec)</item>
+        <item>Seek (-60sec)</item>
+        <item>Volume +</item>
+        <item>Volume -</item>
+        <item>Stop Music</item>
+    </string-array>
+
+    <!-- Menu item -->
+    <string name="save_lyrics">Save lyrics</string>
+    <string name="save_lyrics_summary">When searching lyrics online, save them to allow offline access</string>
+    <string name="go_popup">Show Popup</string>
+    <string name="go_advanced_popup">Touch icon to show/hide controls.\nPress "x" to dismiss popup</string>
+
+    <!-- ControlPanelMusic strings -->
+    <string name="playlist_favourites">Favourites</string>
+    <string name="playlist_favouritesstations">Favourites-Stations</string>
+    <string name="playlist_favouritesonline">Favourites-Online</string>
+    <string name="playlist_addfavourites">Add to Favourites</string>
+
+    <string-array name="mixradio_entry">
+        <item>Search</item>
+        <item>Top Music Stations</item>
+        <item>Random Music Stations</item>
+        <item>Alternative</item>
+        <item>Blues</item>
+        <item>Classical</item>
+        <item>Country</item>
+        <item>Decades</item>
+        <item>Easy Listening</item>
+        <item>Electronic</item>
+        <item>Folk</item>
+        <item>Inspirational</item>
+        <item>International</item>
+        <item>Jazz</item>
+        <item>Latin</item>
+        <item>Metal</item>
+        <item>Misc</item>
+        <item>New Age</item>
+        <item>Pop</item>
+        <item>R&amp;B and Urban</item>
+        <item>Rap</item>
+        <item>Reggae</item>
+        <item>Rock</item>
+        <item>Seasonal and Holiday</item>
+        <item>Soundtracks</item>
+        <item>Themes</item>
+    </string-array>
+
+    <string name="mixradio_dialog">Searching your Radio&#8230;</string>
+    <string name="camera_lockscreen">LongPress to launch Camera</string>
+    <string name="backup_button">Backup</string>
+    <string name="restore_button">Restore</string>
+    <string name="backup_files">Backup/Restore ThunderMusic Files</string>
+    <string name="backup_files_text">You can Backup or Restore your Online Playlists, Artworks and Lyrics. What do you want to do?</string>
+    <string name="backup_done">Backup Complete, enjoy your music!</string>
+    <string name="backup_notfound">No Backup found!</string>
+
+    <string name="share_string">Listening to </string>
+    <string name="online_settings">Online Settings</string>
+    <string name="clear_online_title">Delete Streaming History</string>
+    <string name="clear_online_summary">Delete Streaming Search History</string>
+    <string name="clear_online_dialog">Delete Streaming Search History</string>
+
+    <!--Use \t to pad the item, android does not allow to pad the spinner itself -->
+    <string name="onlineall_nav">\t Online Music \t</string>
+    <string name="onlineradio_nav">\t ShoutCast \t</string>
+    <string name="playlists_nav">\t Playlists \t</string>
+
+    <string name="onlineall">All</string>
+    <string name="youtube">YouTube</string>
+    <string name="soundcloud">SoundCloud</string>
+    <string name="bandcamp">BandCamp</string>
+    <string name="archiveorg">Archive.org</string>
+    <string name="fmarchiveorg">FreeMusicArchive</string>
+
+    <string name="crash_toast">Sorry, ThunderMusic stopped working\nSend a bug report to resolve the problem!</string>
+    <string name="crash_thanks_toast">Thanks for reporting!\nYour help will be precious!</string>
+    <string name="crash_text">\tI\'m sorry,\t\n\tThunderMusic crashed.\t\n\tWould you like to sent a report?\t\n\tThis will help to improve the app quality\t\n\tThanks.</string>
+
+    <string name="playstore_string">https://play.google.com/store/apps/details?id=com.luca89.thundermusic</string>
+</resources>

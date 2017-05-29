@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:persistent="true"
+    android:title="@string/settings">
+
+    <PreferenceCategory android:title="@string/settings">
+        <PreferenceScreen android:title="@string/ui_settings">
+            <PreferenceScreen android:title="@string/notification_settings">
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:key="open_notification"
+                    android:summary="@string/notification_enable_summary"
+                    android:title="@string/notification_enable_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="open_popup"
+                    android:summary="@string/popup_enable_summary"
+                    android:title="@string/popup_enable_title" />
+
+                <com.luca89.views.SummariedListPreference
+                    android:defaultValue="1"
+                    android:dialogTitle="@string/notification_title"
+                    android:entries="@array/entries_notification"
+                    android:entryValues="@array/values_notification"
+                    android:key="notification"
+                    android:title="@string/notification_title" />
+            </PreferenceScreen>
+            <PreferenceScreen android:title="@string/theme_title">
+                <com.luca89.views.SummariedListPreference
+                    android:defaultValue="3"
+                    android:dialogTitle="@string/theme_title"
+                    android:entries="@array/entries_theme_screen"
+                    android:entryValues="@array/values_theme_screen"
+                    android:key="theme"
+                    android:title="@string/theme_title" />
+
+                <com.luca89.views.ColorPickerPreference
+                    android:defaultValue="0xff4285f4"
+                    android:key="custom_theme"
+                    android:summary="@string/custom_theme_summary"
+                    android:title="@string/custom_theme_title" />
+            </PreferenceScreen>
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="stay_on"
+                android:summary="@string/stay_on_summary"
+                android:title="@string/stay_on_title" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="pref_shake"
+            android:title="@string/pref_shake">
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="enable_flip"
+                android:summary="@string/enable_flip_summary"
+                android:title="@string/enable_flip_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="enable_shake"
+                android:summary="@string/enable_shake_summary"
+                android:title="@string/enable_shake_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="enable_shake"
+                android:key="shake_from_paused"
+                android:summary="@string/shake_from_paused_summary"
+                android:title="@string/shake_from_paused_title" />
+
+            <com.luca89.views.SummariedListPreference
+                android:defaultValue="2"
+                android:dependency="enable_shake"
+                android:entries="@array/click_action_entries"
+                android:entryValues="@array/click_action_values"
+                android:key="shake_action"
+                android:title="@string/shake_action_title" />
+            <!-- Might be nice to show something indicating the current shake force for this preference. -->
+            <com.luca89.utils.activities.ShakeThresholdPreference
+                android:key="shake_threshold"
+                android:negativeButtonText="@null"
+                android:title="@string/shake_threshold_title" />
+        </PreferenceScreen>
+        <PreferenceScreen android:title="@string/headset_settings">
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="launch_on_headset_plug"
+                android:summary="@string/launch_on_headset_plug_summary"
+                android:title="@string/launch_on_headset_plug_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="unpause_on_headset_plug"
+                android:summary="@string/unpause_on_headset_plug_summary"
+                android:title="@string/unpause_on_headset_plug_title" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="enable_headsethook"
+                android:summary="@string/headsethook__summary"
+                android:title="@string/headsethook_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="enable_headsethook"
+                android:key="four_click_enable"
+                android:summary="@string/four_click_summary"
+                android:title="@string/four_click_title" />
+
+            <com.luca89.views.SummariedListPreference
+                android:defaultValue="1"
+                android:dependency="enable_headsethook"
+                android:entries="@array/click_action_entries"
+                android:entryValues="@array/click_action_values"
+                android:key="click_action"
+                android:title="@string/single_click_title" />
+            <com.luca89.views.SummariedListPreference
+                android:defaultValue="2"
+                android:dependency="enable_headsethook"
+                android:entries="@array/click_action_entries"
+                android:entryValues="@array/click_action_values"
+                android:key="click_action2"
+                android:title="@string/double_click_title" />
+            <com.luca89.views.SummariedListPreference
+                android:defaultValue="3"
+                android:dependency="enable_headsethook"
+                android:entries="@array/click_action_entries"
+                android:entryValues="@array/click_action_values"
+                android:key="click_action3"
+                android:title="@string/triple_click_title" />
+            <com.luca89.views.SummariedListPreference
+                android:defaultValue="7"
+                android:dependency="four_click_enable"
+                android:entries="@array/click_action_entries"
+                android:entryValues="@array/click_action_values"
+                android:key="click_action4"
+                android:title="@string/four_click_action_title" />
+        </PreferenceScreen>
+        <PreferenceScreen android:title="@string/ui_lockscreen">
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="aosp_lock"
+                android:summary="@string/aosp_lock_summary"
+                android:title="@string/aosp_lock_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="use_as_lock"
+                android:summary="@string/use_as_lock_summary"
+                android:title="@string/use_as_lock_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="use_as_lock"
+                android:key="use_as_lock_main"
+                android:summary="@string/use_as_lock_main_summary"
+                android:title="@string/use_as_lock_main_title" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="use_as_lock"
+                android:key="longpress_to_skip"
+                android:summary="@string/longpress_to_skip_summary"
+                android:title="@string/longpress_to_skip_title" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="use_as_lock"
+                android:key="smart_lock"
+                android:summary="@string/smart_lock_summary"
+                android:title="@string/smart_lock_title" />
+        </PreferenceScreen>
+        <PreferenceScreen android:title="@string/behaviour_settings">
+            <ListPreference
+                android:defaultValue="6"
+                android:dialogTitle="@string/duck_attenuation_title"
+                android:entries="@array/entries_duck_attenuation"
+                android:entryValues="@array/values_duck_attenuation"
+                android:key="duck_attenuation"
+                android:summary="@string/duck_attenuation_summary"
+                android:title="@string/duck_attenuation_title" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/online_settings">
+        <PreferenceScreen
+            android:summary="@string/clear_online_summary"
+            android:title="@string/clear_online_title">
+            <intent
+                android:targetClass="ccom.luca89.utils.activities.OnlineSearchClearHistory"
+                android:targetPackage="com.luca89.thundermusic" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/misc_settings">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="save_lyrics"
+            android:summary="@string/save_lyrics_summary"
+            android:title="@string/save_lyrics" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="use_idle_timeout"
+            android:summary="@string/use_idle_timeout_summary"
+            android:title="@string/use_idle_timeout_title" />
+
+        <com.luca89.utils.activities.IdlePreference
+            android:dependency="use_idle_timeout"
+            android:key="idle_timeout"
+            android:title="@string/idle_timeout_title" />
+
+        <PreferenceScreen
+            android:summary="@string/backup_files"
+            android:title="@string/backup_files">
+            <intent
+                android:targetClass="com.luca89.utils.activities.BackupRestore"
+                android:targetPackage="com.luca89.thundermusic" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

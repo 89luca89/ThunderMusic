@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/control_next"
+        style="@android:style/MediaButton.Ffwd"
+        android:layout_width="50dip"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="center"
+        android:src="@drawable/btn_playback_next_black" />
+
+    <ImageView
+        android:id="@+id/divider_next_play"
+        android:layout_width="2dip"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/control_next" />
+
+    <ImageButton
+        android:id="@+id/control_play"
+        style="@android:style/MediaButton.Play"
+        android:layout_width="50dip"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/divider_next_play"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="center"
+        android:src="@drawable/btn_playback_play_black" />
+
+    <ImageView
+        android:id="@+id/divider_play_info"
+        android:layout_width="2dip"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/control_play" />
+
+    <ImageButton
+        android:id="@+id/control_prev"
+        style="@android:style/MediaButton.Rew"
+        android:layout_width="50dip"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/divider_play_info"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="center"
+        android:src="@drawable/btn_playback_previous_black" />
+
+    <ImageView
+        android:id="@+id/divider_prev_info"
+        android:layout_width="2dip"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/control_prev" />
+
+    <LinearLayout
+        android:id="@+id/album_appwidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/divider_prev_info"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/albumart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="8dip">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:fadingEdge="horizontal"
+                android:fadingEdgeLength="10dip"
+                android:fontFamily="sans-serif-light"
+                android:singleLine="true"
+                android:textColor="#FF000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:fadingEdge="horizontal"
+                android:fadingEdgeLength="10dip"
+                android:fontFamily="sans-serif-light"
+                android:singleLine="true"
+                android:textColor="#FF000000"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

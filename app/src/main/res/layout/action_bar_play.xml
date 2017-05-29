@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nowplaying_actionbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/music_bar_height"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="8dip"
+    android:paddingRight="8dip"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/album"
+        android:layout_width="@dimen/music_bar_height"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dip"
+        android:padding="8dip"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_toLeftOf="@+id/controls"
+        android:layout_toRightOf="@+id/album"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="8dip">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/albumname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:fontFamily="sans-serif-light"
+            android:paddingTop="4dip"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/controls"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="8dip">
+
+        <ImageButton
+            android:id="@+id/prev"
+            android:layout_width="@dimen/music_bar_height"
+            android:layout_height="@dimen/music_bar_height"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="@dimen/music_bar_height"
+            android:layout_height="@dimen/music_bar_height"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@+id/prev"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="@dimen/music_bar_height"
+            android:layout_height="@dimen/music_bar_height"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@+id/pause"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

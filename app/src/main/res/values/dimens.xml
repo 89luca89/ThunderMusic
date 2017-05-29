@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <dimen name="abc_text_size_title_material_toolbar">18dp</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">15dp</dimen>
+
+    <!-- APP -->
+    <dimen name="music_bar_height">60dip</dimen>
+    <dimen name="tabs_height">56dip</dimen>
+    <dimen name="button_size">56dip</dimen>
+    <dimen name="tabs_doubleheight">112dip</dimen>
+    <dimen name="padding_item_right">5dip</dimen>
+    <dimen name="padding_item">16dip</dimen>
+    <dimen name="padding_item_list">20dip</dimen>
+    <dimen name="column_width">300dip</dimen>
+    <dimen name="header_height">355dip</dimen>
+    <dimen name="item_height">78dip</dimen>
+    <dimen name="icon_size">36dip</dimen>
+    <dimen name="icon_margin">20dip</dimen>
+    <dimen name="FAB_negative_margin">-30dip</dimen>
+    <dimen name="FAB_margin_right">16dip</dimen>
+    <dimen name="FAB_margin_left">0dip</dimen>
+    <dimen name="FAB_margin_top">0dip</dimen>
+    <dimen name="FAB_margin_bottom">90dip</dimen>
+    <dimen name="FAB_margin_bottom_small">34dip</dimen>
+    <dimen name="normal_height">75dip</dimen>
+    <dimen name="expanded_height">90dip</dimen>
+    <dimen name="nowplaying_info_height">105dip</dimen>
+    <dimen name="nowplaying_controls_height">60dip</dimen>
+    <dimen name="nowplaying_controls_height_land">72dip</dimen>
+
+    <!-- ACTIONBAR -->
+    <dimen name="actionbar_custom_height">56dip</dimen>
+    <dimen name="actionbar_custom_translucent">80dip</dimen>
+    <dimen name="shadow_height">8dip</dimen>
+
+</resources>

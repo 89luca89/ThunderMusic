@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/albumart"
+        android:layout_width="145dip"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/albumart_info_divider"
+        android:layout_width="1dip"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/albumart"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/albumart"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/control_repeat"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_mp_repeat_off_btn" />
+
+        <ImageButton
+            android:id="@+id/control_prev"
+            style="@android:style/MediaButton.Rew"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center"
+            android:src="@drawable/btn_playback_previous_black" />
+
+        <ImageButton
+            android:id="@+id/control_play"
+            style="@android:style/MediaButton.Play"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center"
+            android:src="@drawable/btn_playback_play_black" />
+
+        <ImageButton
+            android:id="@+id/control_next"
+            style="@android:style/MediaButton.Ffwd"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="center"
+            android:src="@drawable/btn_playback_next_black" />
+
+        <ImageButton
+            android:id="@+id/control_shuffle"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_mp_shuffle_off_btn"></ImageButton>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/controls_info_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_above="@id/controls"
+        android:layout_toRightOf="@id/albumart_info_divider"
+        android:background="@android:color/darker_gray"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/controls_info_divider"
+        android:layout_alignLeft="@+id/controls_info_divider"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="6dip"
+        android:paddingRight="8dip">
+
+        <TextView
+            android:id="@+id/artistname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textColor="#FF000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/albumname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textColor="#FF000000"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/trackname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:singleLine="true"
+            android:textColor="#FF000000"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</RelativeLayout>

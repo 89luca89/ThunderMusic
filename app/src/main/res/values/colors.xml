@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent2">#7f000000</color>
+    <color name="transparent3">#99000000</color>
+    <color name="transparent6">#44000000</color>
+    <color name="transparent6.5">#33000000</color>
+    <color name="transparent7">#22000000</color>
+    <color name="tabs_disabled">#99FFFFFF</color>
+    <color name="holo">#ff1193c3</color>
+    <color name="bar_background">#ff1e1e1e</color>
+
+
+    <!--3f71c4 -->
+    <color name="background">#F0F0F0</color>
+    <color name="dark_text_color">#ff404040</color>
+
+    <color name="google_grey">#ff252525</color>
+    <color name="google_dark_blue_fab">#ff3f71c4</color>
+    <color name="google_dark_blue">#ff4285f4</color>
+
+    <color name="background_dark">#ff303030</color>
+    <!-- card colors -->
+    <color name="card_background">#ffffff</color>
+    <color name="card_background_pressed">#eeeeee</color>
+    <color name="card_backgroung_dark">#252525</color>
+    <color name="card_backgroung_dark_pressed">#454545</color>
+    <color name="card_shadow_1">#c4c4c4</color>
+    <color name="card_shadow_2">#dddddd</color>
+    <color name="card_shadow_3">#101010</color>
+    <color name="card_shadow_4">#181818</color>
+</resources>

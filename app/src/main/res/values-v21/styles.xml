@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="BaseTheme" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarSize">@dimen/actionbar_custom_height</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+        <item name="android:actionDropDownStyle">@style/MyDropDownNav</item>
+        <item name="android:spinnerStyle">@style/MyDropDownNavLight</item>
+        <item name="android:spinnerDropDownItemStyle">@style/MySpinnerItem.DropDownItem</item>
+        <item name="android:popupMenuStyle">@android:style/Widget.Holo.Light.PopupMenu</item>
+        <item name="android:listPopupWindowStyle">@android:style/Widget.Holo.Light.ListPopupWindow
+        </item>
+        <item name="android:textAppearanceLargePopupMenu">@style/MyPopupMenuTextAppearance</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/MyPopupMenuTextAppearance</item>
+        <item name="android:autoCompleteTextViewStyle">
+            @android:style/Widget.Holo.AutoCompleteTextView
+        </item>
+        <item name="android:dialogTheme">
+            @android:style/Theme.Holo.Light.Dialog.NoActionBar
+        </item>
+        <item name="android:alertDialogTheme">
+            @android:style/Theme.Holo.Light.Dialog.NoActionBar
+        </item>
+        <item name="android:actionBarWidgetTheme">@android:style/Theme.Holo.Light</item>
+        <item name="android:colorPrimary">@android:color/transparent</item>
+        <item name="android:colorPrimaryDark">@android:color/transparent</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/fast_thumb_dark</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="ThunderMusic55" parent="@style/BaseTheme">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Example.Overlay</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:selectableItemBackground">@drawable/item_background_holo_light</item>
+        <item name="android:homeAsUpIndicator">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="ThunderMusic" parent="@style/BaseTheme">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Example</item>
+        <item name="android:selectableItemBackground">@drawable/item_background_holo_light</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/album"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent2" />
+
+    <RelativeLayout
+        android:id="@+id/window"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <RelativeLayout
+            android:id="@+id/controls"
+            android:layout_width="match_parent"
+            android:layout_height="250dip"
+            android:animateLayoutChanges="true"
+            android:background="@color/background"
+            android:paddingBottom="@dimen/padding_item"
+            android:paddingLeft="@dimen/padding_item"
+            android:paddingRight="@dimen/padding_item">
+
+            <TextView
+                android:id="@+id/trackname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?android:attr/actionBarSize"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:maxLines="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/albumname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trackname"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:layout_below="@+id/albumname"
+                android:paddingTop="4dip">
+
+                <TextView
+                    android:id="@+id/currenttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignRight="@id/progress"
+                    android:layout_marginLeft="6dip"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="4dip"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/totaltime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="6dip"
+                    android:layout_toLeftOf="@id/progress"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="4dip"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="12sp" />
+
+                <SeekBar
+                    android:id="@android:id/progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dip"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="36dip"
+                    android:layout_marginRight="36dip" />
+
+                <com.melnykov.fab.FloatingActionButton xmlns:fab="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/FAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@android:id/progress"
+                    android:layout_centerHorizontal="true"
+                    android:animateLayoutChanges="true"
+                    android:visibility="gone"
+                    fab:fab_type="normal" />
+
+                <ImageButton
+                    android:id="@+id/prev"
+                    android:layout_width="70dip"
+                    android:layout_height="58dip"
+                    android:layout_above="@android:id/progress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toLeftOf="@id/FAB"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <ImageButton
+                    android:id="@+id/next"
+                    android:layout_width="70dip"
+                    android:layout_height="58dip"
+                    android:layout_above="@android:id/progress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@id/FAB"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <ImageButton
+                    android:id="@+id/repeat"
+                    android:layout_width="70dip"
+                    android:layout_height="60dip"
+                    android:layout_above="@android:id/progress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toLeftOf="@id/prev"
+                    android:background="?android:attr/selectableItemBackground" />
+
+                <ImageButton
+                    android:id="@+id/shuffle"
+                    android:layout_width="70dip"
+                    android:layout_height="60dip"
+                    android:layout_above="@android:id/progress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@id/next"
+                    android:background="?android:attr/selectableItemBackground" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/shadow_height"
+            android:layout_below="@+id/controls"
+            android:background="@drawable/shadown_topdown" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/shadow_height"
+            android:layout_below="@+id/controls"
+            android:background="@drawable/shadown_topdown" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/shadow_height"
+            android:layout_below="@+id/controls"
+            android:background="@drawable/shadown_topdown" />
+        <!--
+                 <Button
+                android:id="@+id/unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/unlocktext"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Unlock" />
+        -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light"
+            android:paddingBottom="@dimen/padding_item"
+            android:text="@string/lock_main_title"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/camera"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/padding_item"
+            android:background="?android:attr/selectableItemBackground"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_lockscreen_camera" />
+    </RelativeLayout>
+</RelativeLayout>

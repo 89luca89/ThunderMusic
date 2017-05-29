@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2016 Luca Di Maio <luca.dimaio1@gmail.com>
+  ~
+  ~ This file is part of ThunderMusic Player.
+  ~
+  ~ ThunderMusic is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU Library General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at your
+  ~ option) any later version.
+  ~
+  ~ ThunderMusic is distributed in the hope that it will be useful, but
+  ~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/nointernet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:fontFamily="sans-serif-light"
+        android:padding="16dip"
+        android:text="@string/no_internet_available"
+        android:visibility="gone" />
+
+
+    <GridView
+        android:id="@+id/videosListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/progressBar1"
+        android:animationCache="false"
+        android:clipToPadding="false"
+        android:columnWidth="@dimen/column_width"
+        android:drawSelectorOnTop="true"
+        android:fastScrollEnabled="true"
+        android:listSelector="@color/transparent"
+        android:numColumns="auto_fit"
+        android:paddingTop="@dimen/tabs_doubleheight"
+        android:scrollingCache="false"
+        android:smoothScrollbar="true"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <com.luca89.views.AnimatedLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/tabs_height">
+
+        <AutoCompleteTextView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tabs_height"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/padding_item"
+            android:layout_marginRight="@dimen/padding_item"
+            android:layout_toLeftOf="@+id/search_btn"
+            android:dropDownWidth="wrap_content"
+            android:hint="@android:string/search_go"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textColorHint="@color/tabs_disabled" />
+
+        <ImageButton
+            android:id="@+id/search_btn"
+            android:layout_width="@dimen/tabs_height"
+            android:layout_height="@dimen/tabs_height"
+            android:layout_below="@+id/search_layout"
+            android:layout_toLeftOf="@+id/save_playlist"
+            android:background="?android:attr/selectableItemBackground"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:scaleType="centerInside"
+            android:src="@drawable/music_search_holo_dark" />
+
+        <ImageButton
+            android:id="@+id/save_playlist"
+            android:layout_width="@dimen/tabs_height"
+            android:layout_height="@dimen/tabs_height"
+            android:layout_toLeftOf="@+id/play_all"
+            android:background="?android:attr/selectableItemBackground"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:scaleType="centerInside"
+            android:src="@drawable/music_save_holo_dark" />
+
+        <ImageButton
+            android:id="@+id/play_all"
+            android:layout_width="@dimen/tabs_height"
+            android:layout_height="@dimen/tabs_height"
+            android:layout_alignParentRight="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:scaleType="centerInside"
+            android:src="@drawable/music_playall_holo_dark" />
+    </com.luca89.views.AnimatedLayout>
+
+    <com.melnykov.fab.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/FAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/musicbar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/FAB_margin_bottom_small"
+        android:layout_marginLeft="@dimen/FAB_margin_left"
+        android:layout_marginRight="@dimen/FAB_margin_right"
+        android:layout_marginTop="@dimen/FAB_margin_top"
+        android:animateLayoutChanges="false"
+        android:visibility="gone"
+        app:fab_type="normal" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:layout_below="@+id/search_layout"
+        android:background="@drawable/shadown_topdown" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/shadow_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shadown_downtop" />
+
+</RelativeLayout>
