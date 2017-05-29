@@ -1,4 +1,4 @@
-#THUNDER MUSIC  
+# THUNDER MUSIC  
 Thunder Music is a powerful yet light Material music player for Android for online content consumption.  
   
 Right now the app supports:  
@@ -9,7 +9,7 @@ Right now the app supports:
 - Archive.org  
 - FreemusicArchive  
   
-###All can be listened in background.  
+### All can be listened in background.  
   
   
 The App supports creating local playlists (without having to log-in in any service)  
