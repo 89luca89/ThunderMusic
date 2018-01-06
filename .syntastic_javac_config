@@ -1,0 +1,1 @@
+let g:syntastic_java_javac_classpath = "/home/luca-linux/Desktop/android-sdk-linux/platforms/android-26/*.jar:./app/build/intermediates/classes/release/"
