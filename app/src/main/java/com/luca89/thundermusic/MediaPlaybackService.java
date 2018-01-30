@@ -115,8 +115,8 @@ import thundermusic.IMediaPlaybackService;
  */
 @SuppressWarnings("deprecation")
 @SuppressLint({"NewApi", "HandlerLeak", "InflateParams"})
-public class MediaPlaybackService extends Service implements
-        OnSharedPreferenceChangeListener, SensorEventListener {
+public class MediaPlaybackService
+        extends Service implements OnSharedPreferenceChangeListener, SensorEventListener {
     /**
      * used to specify whether enqueue() should start playing the new list of
      * files right away, next or once all the currently queued files have been
@@ -161,10 +161,13 @@ public class MediaPlaybackService extends Service implements
     public static final String CMDTOGGLESHUFFLE = "toggleshuffle";
     public static final String CMDNOTIF = "buttonId";
     public static final String CMDUNPAUSE = "unpause";
-    public static final String TOGGLEPAUSE_ACTION = "com.luca89.thundermusic.musicservicecommand.togglepause";
+    public static final String TOGGLEPAUSE_ACTION =
+            "com.luca89.thundermusic.musicservicecommand.togglepause";
     public static final String PAUSE_ACTION = "com.luca89.thundermusic.musicservicecommand.pause";
-    public static final String PREVIOUS_ACTION = "com.luca89.thundermusic.musicservicecommand.previous";
-    public static final String PREVIOUS_ACTION2 = "com.luca89.thundermusic.musicservicecommand.previous2";
+    public static final String PREVIOUS_ACTION =
+            "com.luca89.thundermusic.musicservicecommand.previous";
+    public static final String PREVIOUS_ACTION2 =
+            "com.luca89.thundermusic.musicservicecommand.previous2";
     public static final String NEXT_ACTION = "com.luca89.thundermusic.musicservicecommand.next";
     public static final String NEXT_ACTION2 = "com.luca89.thundermusic.musicservicecommand.next2";
     public static final String NEXT_ACTION3 = "com.luca89.thundermusic.musicservicecommand.next3";
@@ -173,9 +176,12 @@ public class MediaPlaybackService extends Service implements
     public static final String SEEK_ACTION3 = "com.luca89.thundermusic.musicservicecommand.seek3";
     public static final String SEEK_ACTION4 = "com.luca89.thundermusic.musicservicecommand.seek4";
     public static final String VOLUME_ACTION = "com.luca89.thundermusic.musicservicecommand.volume";
-    public static final String VOLUME_ACTION2 = "com.luca89.thundermusic.musicservicecommand.volume2";
-    public static final String CYCLEREPEAT_ACTION = "com.luca89.thundermusic.musicservicecommand.cyclerepeat";
-    public static final String TOGGLESHUFFLE_ACTION = "com.luca89.thundermusic.musicservicecommand.toggleshuffle";
+    public static final String VOLUME_ACTION2 =
+            "com.luca89.thundermusic.musicservicecommand.volume2";
+    public static final String CYCLEREPEAT_ACTION =
+            "com.luca89.thundermusic.musicservicecommand.cyclerepeat";
+    public static final String TOGGLESHUFFLE_ACTION =
+            "com.luca89.thundermusic.musicservicecommand.toggleshuffle";
     private static final int TRACK_ENDED = 1;
     private static final int RELEASE_WAKELOCK = 2;
     private static final int SERVER_DIED = 3;
@@ -184,27 +190,27 @@ public class MediaPlaybackService extends Service implements
     private static final int FADEIN_FROM_DUCK = 10;
     private static final int MIN_SHAKE_PERIOD = 1000;
     //    private static KeyguardManager manager;
-//    private static KeyguardManager.KeyguardLock lock;
-//    private static boolean isKeyguardEnabled = true;
-//    private static String LOG_lock = "com.luca89.thundermusic.keyguard";
+    //    private static KeyguardManager.KeyguardLock lock;
+    //    private static boolean isKeyguardEnabled = true;
+    //    private static String LOG_lock = "com.luca89.thundermusic.keyguard";
     private static final int TRACK_WENT_TO_NEXT = 7;
     private static final int IDLE_TIMEOUT = 8;
-    private static MediaAppWidgetProvider4x1 mAppWidgetProvider4x1 = MediaAppWidgetProvider4x1
-            .getInstance();
-    private static MediaAppWidgetProvider4x2 mAppWidgetProvider4x2 = MediaAppWidgetProvider4x2
-            .getInstance();
-    private static MediaAppWidgetProvider2x1 mAppWidgetProvider2x1 = MediaAppWidgetProvider2x1
-            .getInstance();
-    private static MediaAppWidgetProvider4x4 mAppWidgetProvider4x4 = MediaAppWidgetProvider4x4
-            .getInstance();
-    private static MediaAppWidgetProvider4x1_Light mAppWidgetProvider4x1_Light = MediaAppWidgetProvider4x1_Light
-            .getInstance();
-    private static MediaAppWidgetProvider4x2_Light mAppWidgetProvider4x2_Light = MediaAppWidgetProvider4x2_Light
-            .getInstance();
-    private static MediaAppWidgetProvider2x1_Light mAppWidgetProvider2x1_Light = MediaAppWidgetProvider2x1_Light
-            .getInstance();
-    private static MediaAppWidgetProvider4x4_Light mAppWidgetProvider4x4_Light = MediaAppWidgetProvider4x4_Light
-            .getInstance();
+    private static MediaAppWidgetProvider4x1 mAppWidgetProvider4x1 =
+            MediaAppWidgetProvider4x1.getInstance();
+    private static MediaAppWidgetProvider4x2 mAppWidgetProvider4x2 =
+            MediaAppWidgetProvider4x2.getInstance();
+    private static MediaAppWidgetProvider2x1 mAppWidgetProvider2x1 =
+            MediaAppWidgetProvider2x1.getInstance();
+    private static MediaAppWidgetProvider4x4 mAppWidgetProvider4x4 =
+            MediaAppWidgetProvider4x4.getInstance();
+    private static MediaAppWidgetProvider4x1_Light mAppWidgetProvider4x1_Light =
+            MediaAppWidgetProvider4x1_Light.getInstance();
+    private static MediaAppWidgetProvider4x2_Light mAppWidgetProvider4x2_Light =
+            MediaAppWidgetProvider4x2_Light.getInstance();
+    private static MediaAppWidgetProvider2x1_Light mAppWidgetProvider2x1_Light =
+            MediaAppWidgetProvider2x1_Light.getInstance();
+    private static MediaAppWidgetProvider4x4_Light mAppWidgetProvider4x4_Light =
+            MediaAppWidgetProvider4x4_Light.getInstance();
     private static OnlineTrack mOnlineTrack;
     private static Library mOnlineLibrary;
     private static int mOnlinePosition;
@@ -308,18 +314,15 @@ public class MediaPlaybackService extends Service implements
         }
 
         @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
-        }
+        public void onAccuracyChanged(Sensor sensor, int i) {}
     };
     /**
      * Perform actions based on Audio focus changes
      */
     private OnAudioFocusChangeListener mAudioFocusListener = new OnAudioFocusChangeListener() {
         public void onAudioFocusChange(int focusChange) {
-
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
-                Log.v(LOGTAG,
-                        "AudioFocus: received AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
+                Log.v(LOGTAG, "AudioFocus: received AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
                 if (isPlaying()) {
                     int attenuation = getTransientDuckAttenuation();
                     if (attenuation < 0) {
@@ -329,8 +332,7 @@ public class MediaPlaybackService extends Service implements
                     } else if (attenuation > 0) {
                         // 0 Means no ducking wanted so do nothing in that case
                         // setVolume wants a scalar value, not logarithmic
-                        mTransientDuckVolume = (float) Math.pow(10,
-                                -attenuation / 20f);
+                        mTransientDuckVolume = (float) Math.pow(10, -attenuation / 20f);
                         mPlayer.setVolume(mTransientDuckVolume);
                     }
                 }
@@ -342,8 +344,7 @@ public class MediaPlaybackService extends Service implements
                     mPlayer.setVolume(mCurrentVolume);
                     play(); // also queues a fade-in
                 } else if (isPlaying()) {
-                    mCurrentMediaPlayerHandler.sendEmptyMessageDelayed(FADEUP,
-                            10);
+                    mCurrentMediaPlayerHandler.sendEmptyMessageDelayed(FADEUP, 10);
                 }
             } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                 Log.v(LOGTAG, "AudioFocus: received AUDIOFOCUS_LOSS");
@@ -395,7 +396,6 @@ public class MediaPlaybackService extends Service implements
                     break;
                 case SERVER_DIED:
                     if (mIsSupposedToBePlaying) {
-
                         gotoNext(true);
                     }
                     break;
@@ -462,7 +462,6 @@ public class MediaPlaybackService extends Service implements
                 mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
                         AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
             } else if (CMDNEXT2.equals(cmd) || NEXT_ACTION2.equals(action)) {
-
                 gotoNext(true);
                 gotoNext(true);
 
@@ -472,24 +471,19 @@ public class MediaPlaybackService extends Service implements
                 gotoNext(true);
                 setShuffleMode(shuffle);
             } else if (CMDSEEK.equals(cmd) || SEEK_ACTION.equals(action)) {
-
                 seek(mPlayer.position() + 30000);
             } else if (CMDSEEK2.equals(cmd) || SEEK_ACTION2.equals(action)) {
-
                 seek(mPlayer.position() + 60000);
             } else if (CMDSEEK3.equals(cmd) || SEEK_ACTION3.equals(action)) {
                 seek(mPlayer.position() - 30000);
             } else if (CMDSEEK4.equals(cmd) || SEEK_ACTION4.equals(action)) {
                 seek(mPlayer.position() - 60000);
-            } else if (CMDPREVIOUS.equals(cmd)
-                    || PREVIOUS_ACTION.equals(action)) {
+            } else if (CMDPREVIOUS.equals(cmd) || PREVIOUS_ACTION.equals(action)) {
                 prev();
-            } else if (CMDPREVIOUS2.equals(cmd)
-                    || PREVIOUS_ACTION2.equals(action)) {
+            } else if (CMDPREVIOUS2.equals(cmd) || PREVIOUS_ACTION2.equals(action)) {
                 prev();
                 prev();
-            } else if (CMDTOGGLEPAUSE.equals(cmd)
-                    || TOGGLEPAUSE_ACTION.equals(action)) {
+            } else if (CMDTOGGLEPAUSE.equals(cmd) || TOGGLEPAUSE_ACTION.equals(action)) {
                 if (isPlaying()) {
                     pause();
                     mPausedByTransientLossOfFocus = false;
@@ -510,80 +504,58 @@ public class MediaPlaybackService extends Service implements
                 if (!isPlaying()) {
                     play();
                 }
-            } else if (CMDCYCLEREPEAT.equals(cmd)
-                    || CYCLEREPEAT_ACTION.equals(action)) {
+            } else if (CMDCYCLEREPEAT.equals(cmd) || CYCLEREPEAT_ACTION.equals(action)) {
                 cycleRepeat();
-            } else if (CMDTOGGLESHUFFLE.equals(cmd)
-                    || TOGGLESHUFFLE_ACTION.equals(action)) {
+            } else if (CMDTOGGLESHUFFLE.equals(cmd) || TOGGLESHUFFLE_ACTION.equals(action)) {
                 toggleShuffle();
             } else if (MediaAppWidgetProvider4x1.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x1.performUpdate(MediaPlaybackService.this,
-                        appWidgetURLs);
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x1.performUpdate(MediaPlaybackService.this, appWidgetURLs);
             } else if (MediaAppWidgetProvider4x2.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x2.performUpdate(MediaPlaybackService.this,
-                        appWidgetURLs);
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x2.performUpdate(MediaPlaybackService.this, appWidgetURLs);
             } else if (MediaAppWidgetProvider2x1.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider2x1.performUpdate(MediaPlaybackService.this,
-                        appWidgetURLs);
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider2x1.performUpdate(MediaPlaybackService.this, appWidgetURLs);
             } else if (MediaAppWidgetProvider4x4.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x4.performUpdate(MediaPlaybackService.this,
-                        appWidgetURLs);
-            } else if (MediaAppWidgetProvider4x1_Light.CMDAPPWIDGETUPDATE
-                    .equals(cmd)) {
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x4.performUpdate(MediaPlaybackService.this, appWidgetURLs);
+            } else if (MediaAppWidgetProvider4x1_Light.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x1_Light.performUpdate(
-                        MediaPlaybackService.this, appWidgetURLs);
-            } else if (MediaAppWidgetProvider4x2_Light.CMDAPPWIDGETUPDATE
-                    .equals(cmd)) {
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x1_Light.performUpdate(MediaPlaybackService.this, appWidgetURLs);
+            } else if (MediaAppWidgetProvider4x2_Light.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x2_Light.performUpdate(
-                        MediaPlaybackService.this, appWidgetURLs);
-            } else if (MediaAppWidgetProvider2x1_Light.CMDAPPWIDGETUPDATE
-                    .equals(cmd)) {
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x2_Light.performUpdate(MediaPlaybackService.this, appWidgetURLs);
+            } else if (MediaAppWidgetProvider2x1_Light.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider2x1_Light.performUpdate(
-                        MediaPlaybackService.this, appWidgetURLs);
-            } else if (MediaAppWidgetProvider4x4_Light.CMDAPPWIDGETUPDATE
-                    .equals(cmd)) {
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider2x1_Light.performUpdate(MediaPlaybackService.this, appWidgetURLs);
+            } else if (MediaAppWidgetProvider4x4_Light.CMDAPPWIDGETUPDATE.equals(cmd)) {
                 // Someone asked us to refresh a set of specific widgets,
                 // probably
                 // because they were just added.
-                int[] appWidgetURLs = intent
-                        .getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
-                mAppWidgetProvider4x4_Light.performUpdate(
-                        MediaPlaybackService.this, appWidgetURLs);
+                int[] appWidgetURLs = intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+                mAppWidgetProvider4x4_Light.performUpdate(MediaPlaybackService.this, appWidgetURLs);
             } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
                 mScreenOFF = false;
             } else if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
@@ -593,9 +565,7 @@ public class MediaPlaybackService extends Service implements
                     new CountDownTimer(2000, // 1 second countdown
                             9999) {
                         @Override
-                        public void onTick(long millisUntilFinished) {
-
-                        }
+                        public void onTick(long millisUntilFinished) {}
 
                         @Override
                         public void onFinish() {
@@ -603,24 +573,21 @@ public class MediaPlaybackService extends Service implements
                                 StartLock();
                             }
                         }
-                    }.start();
+                    }
+                            .start();
             } else if (Intent.ACTION_HEADSET_PLUG.equals(intent.getAction())) {
-                if (mSettings.getBoolean("unpause_on_headset_plug", false)
-                        && mPlugInitialized
+                if (mSettings.getBoolean("unpause_on_headset_plug", false) && mPlugInitialized
                         && intent.getIntExtra("state", 0) == 1) {
-                    Log.d(getClass().getSimpleName(),
-                            "Headset connected, resuming playback");
+                    Log.d(getClass().getSimpleName(), "Headset connected, resuming playback");
                     if (!isPlaying()) {
                         play();
                     }
                 } else if (!mPlugInitialized) {
                     mPlugInitialized = true;
                 }
-                if (mSettings.getBoolean("launch_on_headset_plug", false)
-                        && mPlugInitializedPlayer
+                if (mSettings.getBoolean("launch_on_headset_plug", false) && mPlugInitializedPlayer
                         && intent.getIntExtra("state", 0) == 1) {
-                    Log.d(getClass().getSimpleName(),
-                            "Headset connected, resuming playback");
+                    Log.d(getClass().getSimpleName(), "Headset connected, resuming playback");
 
                     StartPlayer();
                 } else if (!mPlugInitializedPlayer) {
@@ -637,12 +604,9 @@ public class MediaPlaybackService extends Service implements
      * @return
      * @throws IOException
      */
-    private static BitmapDrawable getDrawableFromUrl(final String urlStr)
-            throws IOException {
-
+    private static BitmapDrawable getDrawableFromUrl(final String urlStr) throws IOException {
         URL url = new URL(urlStr);
-        final HttpURLConnection httpURLConnection = (HttpURLConnection) url
-                .openConnection();
+        final HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
         httpURLConnection.setRequestMethod("GET");
         httpURLConnection.setUseCaches(true);
         httpURLConnection.connect();
@@ -666,22 +630,22 @@ public class MediaPlaybackService extends Service implements
                 Bitmap bm;
                 try {
                     if (mOnlineTrack.getRadiomode()) {
-                        bm = ((BitmapDrawable) context.getResources()
-                                .getDrawable(R.drawable.logo_shoutcast)).getBitmap();
+                        bm = ((BitmapDrawable) context.getResources().getDrawable(
+                                      R.drawable.logo_shoutcast))
+                                     .getBitmap();
                     } else {
-                        int id = InterfaceUtils.getOnlineDefaultArtworkRes(mOnlineTrack.getProvider());
+                        int id = InterfaceUtils.getOnlineDefaultArtworkRes(
+                                mOnlineTrack.getProvider());
                         if (id != 0) {
-                            bm = ((BitmapDrawable) context
-                                    .getResources().getDrawable(id)).getBitmap();
+                            bm = ((BitmapDrawable) context.getResources().getDrawable(id))
+                                         .getBitmap();
                         } else {
-                            bm = getDrawableFromUrl(mOnlineTrack.getArtUrl())
-                                    .getBitmap();
+                            bm = getDrawableFromUrl(mOnlineTrack.getArtUrl()).getBitmap();
                         }
                     }
                     ImageUtils.setThumbArtwork(bm, context, -2);
                     MusicUtils.sService.notifyChange(META_CHANGED);
                 } catch (Exception e) {
-
                 }
             }
         });
@@ -690,24 +654,22 @@ public class MediaPlaybackService extends Service implements
     }
 
     private int getTransientDuckAttenuation() {
-        return Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(PreferencesActivity.KEY_DUCK_ATTENUATION, "10"));
+        return Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(
+                PreferencesActivity.KEY_DUCK_ATTENUATION, "10"));
     }
 
     public void StartLock() {
         Intent intent = new Intent();
         intent.setClass(this, MediaLockscreenActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_FROM_BACKGROUND
-                | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                | Intent.FLAG_ACTIVITY_NEW_TASK);
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     public void StartPlayer() {
         Intent intent = new Intent();
         intent.setClass(this, MediaPlaybackActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -715,27 +677,24 @@ public class MediaPlaybackService extends Service implements
     public void onCreate() {
         super.onCreate();
 
-        mOnlineTrack = new OnlineTrack("", "", "", "", "", "", 0, 0, "",
-                false);
+        mOnlineTrack = new OnlineTrack("", "", "", "", "", "", 0, 0, "", false);
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        ComponentName rec = new ComponentName(getPackageName(),
-                MediaButtonIntentReceiver.class.getName());
+        ComponentName rec =
+                new ComponentName(getPackageName(), MediaButtonIntentReceiver.class.getName());
         mAudioManager.registerMediaButtonEventReceiver(rec);
         Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
         mediaButtonIntent.setComponent(rec);
         PendingIntent mediaPendingIntent = PendingIntent.getBroadcast(
-                getApplicationContext(), 0, mediaButtonIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                getApplicationContext(), 0, mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         mRemoteControlClient = new RemoteControlClient(mediaPendingIntent);
         setRemoteControlClient();
         // mAudioManager.registerRemoteControlClient(mRemoteControlClient);
         mnotif = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         int flags = RemoteControlClient.FLAG_KEY_MEDIA_PREVIOUS
-                | RemoteControlClient.FLAG_KEY_MEDIA_NEXT
-                | RemoteControlClient.FLAG_KEY_MEDIA_PLAY
+                | RemoteControlClient.FLAG_KEY_MEDIA_NEXT | RemoteControlClient.FLAG_KEY_MEDIA_PLAY
                 | RemoteControlClient.FLAG_KEY_MEDIA_PAUSE
                 | RemoteControlClient.FLAG_KEY_MEDIA_PLAY_PAUSE
                 | RemoteControlClient.FLAG_KEY_MEDIA_STOP;
@@ -770,19 +729,17 @@ public class MediaPlaybackService extends Service implements
         commandFilter.addAction(Intent.ACTION_MEDIA_BUTTON);
         registerReceiver(mIntentReceiver, commandFilter);
 
-        if (mSettings == null)
-            mSettings = PreferenceManager.getDefaultSharedPreferences(this);
+        if (mSettings == null) mSettings = PreferenceManager.getDefaultSharedPreferences(this);
         mSettings.registerOnSharedPreferenceChangeListener(this);
-        mIdleTimeout = mSettings.getBoolean("use_idle_timeout", false) ? mSettings
-                .getInt("idle_timeout", 3600) : 0;
+        mIdleTimeout = mSettings.getBoolean("use_idle_timeout", false)
+                ? mSettings.getInt("idle_timeout", 3600)
+                : 0;
         if (mSettings.getBoolean("enable_shake", false)) {
-            mShakeAction = Integer.valueOf(mSettings.getString("shake_action",
-                    "2"));
+            mShakeAction = Integer.valueOf(mSettings.getString("shake_action", "2"));
         }
         mShakeThreshold = mSettings.getInt("shake_threshold", 80) / 10.0f;
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this
-                .getClass().getName());
+        mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this.getClass().getName());
 
         // If the service was idle, but got killed before it stopped itself, the
         // system will relaunch it. Make sure it gets stopped again in that
@@ -793,7 +750,6 @@ public class MediaPlaybackService extends Service implements
         mAccelFiltered = 0.0f;
         mAccelLast = SensorManager.GRAVITY_EARTH;
         setupSensor();
-
     }
 
     /**
@@ -802,8 +758,7 @@ public class MediaPlaybackService extends Service implements
      */
     private void setupSensor() {
         if (!mSettings.getBoolean("enable_shake", false)
-                && !mSettings.getBoolean(PreferencesActivity.KEY_ENABLE_FLIP,
-                false)) {
+                && !mSettings.getBoolean(PreferencesActivity.KEY_ENABLE_FLIP, false)) {
             mSensorManager.unregisterListener(this);
         } else {
             mSensorManager.registerListener(this,
@@ -824,12 +779,14 @@ public class MediaPlaybackService extends Service implements
      */
     private void loadPreference(String key) {
         if ("use_idle_timeout".equals(key) || "idle_timeout".equals(key)) {
-            mIdleTimeout = mSettings.getBoolean("use_idle_timeout", false) ? mSettings
-                    .getInt("idle_timeout", 3600) : 0;
+            mIdleTimeout = mSettings.getBoolean("use_idle_timeout", false)
+                    ? mSettings.getInt("idle_timeout", 3600)
+                    : 0;
             userActionTriggered();
         } else if ("enable_shake".equals(key) || "shake_action".equals(key)) {
-            mShakeAction = mSettings.getBoolean("enable_shake", false) ? Integer
-                    .valueOf(mSettings.getString("shake_action", "2")) : 2;
+            mShakeAction = mSettings.getBoolean("enable_shake", false)
+                    ? Integer.valueOf(mSettings.getString("shake_action", "2"))
+                    : 2;
         } else if ("shake_threshold".equals(key)) {
             mShakeThreshold = mSettings.getInt("shake_threshold", 80) / 10.0f;
         }
@@ -843,17 +800,14 @@ public class MediaPlaybackService extends Service implements
 
     @Override
     public void onDestroy() {
-
         // Check that we're not being destroyed while something is still
         // playing.
-        if (chatHead != null)
-            windowManager.removeView(chatHead);
+        if (chatHead != null) windowManager.removeView(chatHead);
         if (isPlaying()) {
             Log.e(LOGTAG, "Service being destroyed while still playing.");
         }
 
-        if (mShakeAction != 0)
-            mSensorManager.unregisterListener(this);
+        if (mShakeAction != 0) mSensorManager.unregisterListener(this);
         // release all MediaPlayer resources, including the native player and
         // wakelocks
 
@@ -876,7 +830,6 @@ public class MediaPlaybackService extends Service implements
         dismissAllNotifications();
         super.onDestroy();
     }
-
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -924,20 +877,17 @@ public class MediaPlaybackService extends Service implements
                 seek(mPlayer.position() - 30000);
             } else if (CMDSEEK4.equals(cmd) || SEEK_ACTION4.equals(action)) {
                 seek(mPlayer.position() - 60000);
-            } else if (CMDPREVIOUS2.equals(cmd)
-                    || PREVIOUS_ACTION2.equals(action)) {
+            } else if (CMDPREVIOUS2.equals(cmd) || PREVIOUS_ACTION2.equals(action)) {
                 prev();
                 prev();
-            } else if (CMDPREVIOUS.equals(cmd)
-                    || PREVIOUS_ACTION.equals(action)) {
+            } else if (CMDPREVIOUS.equals(cmd) || PREVIOUS_ACTION.equals(action)) {
                 if (position() < 5000) {
                     prev();
                 } else {
                     seek(0);
                     play();
                 }
-            } else if (CMDTOGGLEPAUSE.equals(cmd)
-                    || TOGGLEPAUSE_ACTION.equals(action)) {
+            } else if (CMDTOGGLEPAUSE.equals(cmd) || TOGGLEPAUSE_ACTION.equals(action)) {
                 if (isPlaying()) {
                     pause();
                     mPausedByTransientLossOfFocus = false;
@@ -956,11 +906,9 @@ public class MediaPlaybackService extends Service implements
                 }
                 mPausedByTransientLossOfFocus = false;
                 seek(0);
-            } else if (CMDCYCLEREPEAT.equals(cmd)
-                    || CYCLEREPEAT_ACTION.equals(action)) {
+            } else if (CMDCYCLEREPEAT.equals(cmd) || CYCLEREPEAT_ACTION.equals(action)) {
                 cycleRepeat();
-            } else if (CMDTOGGLESHUFFLE.equals(cmd)
-                    || TOGGLESHUFFLE_ACTION.equals(action)) {
+            } else if (CMDTOGGLESHUFFLE.equals(cmd) || TOGGLESHUFFLE_ACTION.equals(action)) {
                 toggleShuffle();
             }
         }
@@ -988,8 +936,7 @@ public class MediaPlaybackService extends Service implements
         // before stopping the service, so that pause/resume isn't slow.
         // Also delay stopping the service if we're transitioning between
         // tracks.
-        if (mPlayListLen > 0
-                || mCurrentMediaPlayerHandler.hasMessages(TRACK_ENDED)) {
+        if (mPlayListLen > 0 || mCurrentMediaPlayerHandler.hasMessages(TRACK_ENDED)) {
             Message msg = mDelayedStopHandler.obtainMessage();
             mDelayedStopHandler.sendMessageDelayed(msg, IDLE_DELAY);
             return true;
@@ -999,7 +946,6 @@ public class MediaPlaybackService extends Service implements
         stopSelf(mServiceStartId);
         return true;
     }
-
 
     /**
      * Notify the change-receivers that something has changed. The intent that
@@ -1015,7 +961,6 @@ public class MediaPlaybackService extends Service implements
      * or that the play-state changed (paused/resumed).
      */
     public void notifyChange(String what) {
-
         Intent i = new Intent(what);
         i.putExtra("id", Long.valueOf(getAudioId()));
         i.putExtra("artist", getArtistName());
@@ -1029,39 +974,27 @@ public class MediaPlaybackService extends Service implements
         sendStickyBroadcast(i);
 
         if (what.equals(PLAYSTATE_CHANGED)) {
-
             if (mSettings.getBoolean(PreferencesActivity.KEY_AOSP_LOCK, true))
-                mRemoteControlClient
-                        .setPlaybackState(isPlaying() ? RemoteControlClient.PLAYSTATE_PLAYING
+                mRemoteControlClient.setPlaybackState(isPlaying()
+                                ? RemoteControlClient.PLAYSTATE_PLAYING
                                 : RemoteControlClient.PLAYSTATE_PAUSED);
-            if (chatHead != null)
-                setPauseButtonImage();
+            if (chatHead != null) setPauseButtonImage();
         } else if (what.equals(META_CHANGED)) {
-
             if (mSettings.getBoolean(PreferencesActivity.KEY_AOSP_LOCK, true)) {
-                MetadataEditor ed = mRemoteControlClient
-                        .editMetadata(true);
-                ed.putString(MediaMetadataRetriever.METADATA_KEY_TITLE,
-                        getTrackName());
-                ed.putString(MediaMetadataRetriever.METADATA_KEY_ALBUM,
-                        getAlbumName());
-                ed.putString(MediaMetadataRetriever.METADATA_KEY_ARTIST,
-                        getArtistName());
-                ed.putLong(MediaMetadataRetriever.METADATA_KEY_DURATION,
-                        duration());
-                BitmapDrawable b = ((BitmapDrawable) ImageUtils.getArtwork(
-                        this, getAlbumId(), true));
+                MetadataEditor ed = mRemoteControlClient.editMetadata(true);
+                ed.putString(MediaMetadataRetriever.METADATA_KEY_TITLE, getTrackName());
+                ed.putString(MediaMetadataRetriever.METADATA_KEY_ALBUM, getAlbumName());
+                ed.putString(MediaMetadataRetriever.METADATA_KEY_ARTIST, getArtistName());
+                ed.putLong(MediaMetadataRetriever.METADATA_KEY_DURATION, duration());
+                BitmapDrawable b =
+                        ((BitmapDrawable) ImageUtils.getArtwork(this, getAlbumId(), true));
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                    if (b != null)
-                        ed.putBitmap(MetadataEditor.BITMAP_KEY_ARTWORK,
-                                b.getBitmap());
+                    if (b != null) ed.putBitmap(MetadataEditor.BITMAP_KEY_ARTWORK, b.getBitmap());
                     ed.apply();
                 } else {
                     Bitmap art = null;
-                    if (b != null)
-                        art = b.getBitmap().copy(b.getBitmap().getConfig(),
-                                true);
+                    if (b != null) art = b.getBitmap().copy(b.getBitmap().getConfig(), true);
                     if (art != null) {
                         ed.putBitmap(MetadataEditor.BITMAP_KEY_ARTWORK, art);
                     }
@@ -1081,29 +1014,30 @@ public class MediaPlaybackService extends Service implements
             if (!isNetworkAvailable()) {
                 stop();
                 buffering = new Builder(this)
-                        .setSmallIcon(R.drawable.indicator_ic_mp_playing_list)
-                        .setTicker(getString(R.string.no_internet_available))
-                        .setContentTitle(
-                                getString(R.string.no_internet_available))
-                        .setContentText(
-                                getString(R.string.no_internet_available))
-                        .build();
+                                    .setSmallIcon(R.drawable.indicator_ic_mp_playing_list)
+                                    .setTicker(getString(R.string.no_internet_available))
+                                    .setContentTitle(getString(R.string.no_internet_available))
+                                    .setContentText(getString(R.string.no_internet_available))
+                                    .build();
 
                 buffering.contentIntent = PendingIntent.getActivity(this, 0,
                         new Intent("com.luca89.thundermusic.PLAYBACK_VIEWER")
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+                        0);
                 mnotif = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 mnotif.notify(PLAYBACKSERVICE_STATUS, buffering);
             } else {
                 buffering = new Builder(this)
-                        .setSmallIcon(R.drawable.indicator_ic_mp_playing_list)
-                        .setTicker("Loading " + getTrackName())
-                        .setContentTitle("Loading " + getTrackName())
-                        .setContentText("Buffering...").build();
+                                    .setSmallIcon(R.drawable.indicator_ic_mp_playing_list)
+                                    .setTicker("Loading " + getTrackName())
+                                    .setContentTitle("Loading " + getTrackName())
+                                    .setContentText("Buffering...")
+                                    .build();
 
                 buffering.contentIntent = PendingIntent.getActivity(this, 0,
                         new Intent("com.luca89.thundermusic.PLAYBACK_VIEWER")
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+                        0);
                 mnotif = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 mnotif.notify(PLAYBACKSERVICE_STATUS, buffering);
             }
@@ -1132,12 +1066,11 @@ public class MediaPlaybackService extends Service implements
      * Starts playback of a previously opened file.
      */
     public void play() {
-
-        mAudioManager.requestAudioFocus(mAudioFocusListener,
-                AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+        mAudioManager.requestAudioFocus(
+                mAudioFocusListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
         mPlayer.setVolume(1.0f);
-        mAudioManager.registerMediaButtonEventReceiver(new ComponentName(this
-                .getPackageName(), MediaButtonIntentReceiver.class.getName()));
+        mAudioManager.registerMediaButtonEventReceiver(new ComponentName(
+                this.getPackageName(), MediaButtonIntentReceiver.class.getName()));
 
         if (mPlayer.isInitialized()) {
             // if we are at the end of the song, go to the next song first
@@ -1226,8 +1159,7 @@ public class MediaPlaybackService extends Service implements
                 } else {
                     mOnlinePosition = mOnlineLibrary.getVideos().size() - 1;
                 }
-                mOnlineTrack = mOnlineLibrary.getVideos().get(
-                        mOnlinePosition);
+                mOnlineTrack = mOnlineLibrary.getVideos().get(mOnlinePosition);
                 openOnline(mOnlineTrack.getUrl());
             }
         }
@@ -1277,8 +1209,7 @@ public class MediaPlaybackService extends Service implements
         } else if (mShuffleMode == SHUFFLE_NORMAL) {
             setShuffleMode(SHUFFLE_NONE);
         } else {
-            Log.e("MediaPlaybackService", "Invalid shuffle mode: "
-                    + mShuffleMode);
+            Log.e("MediaPlaybackService", "Invalid shuffle mode: " + mShuffleMode);
         }
     }
 
@@ -1308,7 +1239,6 @@ public class MediaPlaybackService extends Service implements
     }
 
     public void setRepeatMode(int repeatmode) {
-
         synchronized (this) {
             mRepeatMode = repeatmode;
             notifyChange(REPEATMODE_CHANGED);
@@ -1359,8 +1289,7 @@ public class MediaPlaybackService extends Service implements
      */
     public long[] getQueue() {
         synchronized (this) {
-            if(mOnlineLibrary == null)
-                return new long[0];
+            if (mOnlineLibrary == null) return new long[0];
             int len = mPlayListLen;
             long[] list = new long[len];
             for (int i = 0; i < len; i++) {
@@ -1425,7 +1354,6 @@ public class MediaPlaybackService extends Service implements
         }
     }
 
-
     public String getTrackLink() {
         return mOnlineTrack.getLink();
     }
@@ -1480,10 +1408,8 @@ public class MediaPlaybackService extends Service implements
     public long seek(long pos) {
         if (mPlayer != null)
             if (mPlayer.isInitialized()) {
-                if (pos < 0)
-                    pos = 0;
-                if (pos > mPlayer.duration())
-                    pos = mPlayer.duration();
+                if (pos < 0) pos = 0;
+                if (pos > mPlayer.duration()) pos = mPlayer.duration();
                 return mPlayer.seek(pos);
             }
         return -1;
@@ -1509,8 +1435,7 @@ public class MediaPlaybackService extends Service implements
     private void userActionTriggered() {
         mHandler.removeMessages(FADEDOWN);
         mHandler.removeMessages(IDLE_TIMEOUT);
-        if (mIdleTimeout != 0)
-            mHandler.sendEmptyMessageDelayed(IDLE_TIMEOUT, mIdleTimeout * 1000);
+        if (mIdleTimeout != 0) mHandler.sendEmptyMessageDelayed(IDLE_TIMEOUT, mIdleTimeout * 1000);
 
         if (mCurrentVolume != mUserVolume) {
             mCurrentVolume = mUserVolume;
@@ -1545,11 +1470,9 @@ public class MediaPlaybackService extends Service implements
                     mLastShakeTime = now;
 
                     if (mSettings.getBoolean("shake_from_paused", false)) {
-                        if (!mIsInProximity)
-                            performAction_free(mShakeAction);
+                        if (!mIsInProximity) performAction_free(mShakeAction);
                     } else {
-                        if (!mIsInProximity)
-                            performAction(mShakeAction);
+                        if (!mIsInProximity) performAction(mShakeAction);
                     }
                 }
             }
@@ -1563,8 +1486,7 @@ public class MediaPlaybackService extends Service implements
                             Flip = false;
                         }
                     }
-                } else if (z <= -mShakeThreshold && x < 2 && x > -2 && y < 2.5
-                        && y > -2.5) {
+                } else if (z <= -mShakeThreshold && x < 2 && x > -2 && y < 2.5 && y > -2.5) {
                     if (Flip == false) {
                         if (isPlaying()) {
                             pause();
@@ -1573,12 +1495,10 @@ public class MediaPlaybackService extends Service implements
                     }
                 }
         }
-
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     /**
      * Perform an action based on user preference
@@ -1747,30 +1667,26 @@ public class MediaPlaybackService extends Service implements
     private void setRemoteControlClient() {
         if (mSettings.getBoolean(PreferencesActivity.KEY_AOSP_LOCK, true)) {
             mAudioManager.registerRemoteControlClient(mRemoteControlClient);
-            mRemoteControlClient
-                    .setPlaybackState(isPlaying() ? RemoteControlClient.PLAYSTATE_PLAYING
+            mRemoteControlClient.setPlaybackState(isPlaying()
+                            ? RemoteControlClient.PLAYSTATE_PLAYING
                             : RemoteControlClient.PLAYSTATE_PAUSED);
         } else {
-            mRemoteControlClient
-                    .setPlaybackState(RemoteControlClient.PLAYSTATE_PAUSED);
+            mRemoteControlClient.setPlaybackState(RemoteControlClient.PLAYSTATE_PAUSED);
             mAudioManager.unregisterRemoteControlClient(mRemoteControlClient);
         }
-
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-                                          String key) {
-
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         boolean isPlaying = isPlaying();
         loadPreference(key);
 
         if (key.equals(PreferencesActivity.KEY_AOSP_LOCK)) {
             setRemoteControlClient();
         }
-        if ((key.equals(PreferencesActivity.KEY_NOTIFICATION) || key
-                .equals(PreferencesActivity.NOTIFICAION_ON)
-                || key.equals(PreferencesActivity.KEY_ENABLE_FLIP))
+        if ((key.equals(PreferencesActivity.KEY_NOTIFICATION)
+                    || key.equals(PreferencesActivity.NOTIFICAION_ON)
+                    || key.equals(PreferencesActivity.KEY_ENABLE_FLIP))
                 && mPlayListLen > 0) {
             updateTotalNotification(!isPlaying(), this);
         }
@@ -1781,8 +1697,7 @@ public class MediaPlaybackService extends Service implements
                 closePopup();
             }
         }
-        if (key.equals(PreferencesActivity.KEY_ENABLE_FLIP)
-                || key.equals("enable_shake"))
+        if (key.equals(PreferencesActivity.KEY_ENABLE_FLIP) || key.equals("enable_shake"))
             setupSensor();
         if (isPlaying() && (key.equals(PreferencesActivity.KEY_AOSP_LOCK)))
             notifyChange(META_CHANGED);
@@ -1813,23 +1728,19 @@ public class MediaPlaybackService extends Service implements
                     mOnlineTrack = getOnlineTrack(mOnlinePosition);
             }
         } catch (ClassNotFoundException e) {
-
             e.printStackTrace();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
 
     private int getOnlineNextPosition(boolean force) {
         if (mRepeatMode == REPEAT_CURRENT) {
-            if (mOnlinePosition < 0)
-                return 0;
+            if (mOnlinePosition < 0) return 0;
             return mOnlinePosition;
         } else if (mShuffleMode == SHUFFLE_NORMAL) {
             int numTracks = mOnlineLibrary.getVideos().size();
-            if (numTracks == 1)
-                return 0;
+            if (numTracks == 1) return 0;
             int[] tracks = new int[numTracks];
             for (int i = 0; i < numTracks; i++) {
                 tracks[i] = i;
@@ -1869,8 +1780,7 @@ public class MediaPlaybackService extends Service implements
                     mPlayer.stop();
                     mPlayer.setDataSource(url);
                 } else {
-                    Toast.makeText(this, R.string.no_internet_available,
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.no_internet_available, Toast.LENGTH_LONG).show();
                     stop();
                 }
             }
@@ -1894,19 +1804,16 @@ public class MediaPlaybackService extends Service implements
             MusicUtils.setBooleanPref(getBaseContext(), "radiomode", mOnlineTrack.getRadiomode());
             setOnlineArtwork(this);
             if (mOnlineTrack.getRadiomode()) {
-                MusicUtils.execute(false,
-                        new ShoutCastPlayTask(), true);
+                MusicUtils.execute(false, new ShoutCastPlayTask(), true);
             } else {
                 if (mOnlineTrack.getProvider().equalsIgnoreCase("soundcloud"))
                     setVideoUrl(mOnlineTrack.getUrl());
                 else if (mOnlineTrack.getProvider().equalsIgnoreCase("freemusicarchive.org"))
                     setVideoUrl(mOnlineTrack.getUrl());
                 else if (mOnlineTrack.getProvider().equalsIgnoreCase("archive.org"))
-                    MusicUtils.execute(false,
-                            new ArchiveOrgPlayTask(mOnlineTrack.getLink()), true);
+                    MusicUtils.execute(false, new ArchiveOrgPlayTask(mOnlineTrack.getLink()), true);
                 else if (mOnlineTrack.getProvider().equalsIgnoreCase("bandcamp"))
-                    MusicUtils.execute(false,
-                            new BandcampPlayTask(mOnlineTrack.getLink()), true);
+                    MusicUtils.execute(false, new BandcampPlayTask(mOnlineTrack.getLink()), true);
                 else if (mOnlineTrack.getProvider().equalsIgnoreCase("youtube"))
                     MusicUtils.execute(false, new YoutubePlayTask(mOnlineTrack.getLink()), true);
                 else
@@ -1934,9 +1841,9 @@ public class MediaPlaybackService extends Service implements
      * @return
      */
     private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager
-                .getActiveNetworkInfo();
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
@@ -1948,18 +1855,14 @@ public class MediaPlaybackService extends Service implements
      * @param stop
      * @param context
      */
-    private void updateTotalNotification(final boolean stop,
-                                         final Context context) {
+    private void updateTotalNotification(final boolean stop, final Context context) {
         synchronized (this) {
             new Thread(new Runnable() {
                 public void run() {
-                    if (mSettings.getBoolean(
-                            PreferencesActivity.NOTIFICAION_ON, true)) {
-                        int Notification = Integer.valueOf(PreferenceManager
-                                .getDefaultSharedPreferences(context)
-                                .getString(
-                                        PreferencesActivity.KEY_NOTIFICATION,
-                                        "1"));
+                    if (mSettings.getBoolean(PreferencesActivity.NOTIFICAION_ON, true)) {
+                        int Notification = Integer.valueOf(
+                                PreferenceManager.getDefaultSharedPreferences(context).getString(
+                                        PreferencesActivity.KEY_NOTIFICATION, "1"));
                         if (Notification == 1) {
                             try {
                                 updateNotification1(stop);
@@ -1975,9 +1878,9 @@ public class MediaPlaybackService extends Service implements
                     } else {
                         stopForeground(true);
                     }
-
                 }
-            }).start();
+            })
+                    .start();
         }
     }
 
@@ -1989,11 +1892,10 @@ public class MediaPlaybackService extends Service implements
      * @throws IllegalStateException
      */
     private void updateNotification2(boolean stop) throws IllegalStateException {
-
-        mAudioManager.requestAudioFocus(mAudioFocusListener,
-                AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
-        mAudioManager.registerMediaButtonEventReceiver(new ComponentName(this
-                .getPackageName(), MediaButtonIntentReceiver.class.getName()));
+        mAudioManager.requestAudioFocus(
+                mAudioFocusListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+        mAudioManager.registerMediaButtonEventReceiver(new ComponentName(
+                this.getPackageName(), MediaButtonIntentReceiver.class.getName()));
         if (mPlayer != null)
             if (mPlayer.isInitialized()) {
                 // if we are at the end of the song, go to the next song first
@@ -2008,63 +1910,51 @@ public class MediaPlaybackService extends Service implements
                 mCurrentMediaPlayerHandler.removeMessages(FADEDOWN);
                 mCurrentMediaPlayerHandler.sendEmptyMessage(FADEUP);
 
-                RemoteViews views = new RemoteViews(getPackageName(),
-                        R.layout.notification_simple);
+                RemoteViews views = new RemoteViews(getPackageName(), R.layout.notification_simple);
 
-                Bitmap tmp = ImageUtils.getArtworkQuick1(getBaseContext(),
-                        getAlbumId());
-                if (tmp == null)
-                    tmp = ImageUtils.getDefaultArtwork(getBaseContext())
-                            .getBitmap();
+                Bitmap tmp = ImageUtils.getArtworkQuick1(getBaseContext(), getAlbumId());
+                if (tmp == null) tmp = ImageUtils.getDefaultArtwork(getBaseContext()).getBitmap();
 
                 views.setImageViewBitmap(R.id.icon, tmp);
-                ComponentName rec = new ComponentName(getPackageName(),
-                        MediaButtonIntentReceiver.class.getName());
-                Intent mediaButtonIntent = new Intent(
-                        Intent.ACTION_MEDIA_BUTTON);
+                ComponentName rec = new ComponentName(
+                        getPackageName(), MediaButtonIntentReceiver.class.getName());
+                Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
                 mediaButtonIntent.putExtra(CMDNOTIF, 1);
                 mediaButtonIntent.setComponent(rec);
-                KeyEvent mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN,
-                        KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+                KeyEvent mediaKey =
+                        new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
                 mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
-                PendingIntent mediaPendingIntent = PendingIntent.getBroadcast(
-                        getApplicationContext(), 1, mediaButtonIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-                views.setOnClickPendingIntent(R.id.status_bar_play,
-                        mediaPendingIntent);
+                PendingIntent mediaPendingIntent =
+                        PendingIntent.getBroadcast(getApplicationContext(), 1, mediaButtonIntent,
+                                PendingIntent.FLAG_UPDATE_CURRENT);
+                views.setOnClickPendingIntent(R.id.status_bar_play, mediaPendingIntent);
                 mediaButtonIntent.putExtra(CMDNOTIF, 2);
-                mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN,
-                        KeyEvent.KEYCODE_MEDIA_NEXT);
+                mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT);
                 mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
-                mediaPendingIntent = PendingIntent.getBroadcast(
-                        getApplicationContext(), 2, mediaButtonIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
+                mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 2,
+                        mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 views.setOnClickPendingIntent(R.id.skip, mediaPendingIntent);
                 mediaButtonIntent.putExtra(CMDNOTIF, 3);
-                mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN,
-                        KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+                mediaKey = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PREVIOUS);
                 mediaButtonIntent.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey);
-                mediaPendingIntent = PendingIntent.getBroadcast(
-                        getApplicationContext(), 3, mediaButtonIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
+                mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 3,
+                        mediaButtonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 views.setOnClickPendingIntent(R.id.prev, mediaPendingIntent);
 
                 if (stop)
-                    views.setImageViewResource(R.id.status_bar_play,
-                            ThemeUtils.getResourceDrawableNotification(3));
+                    views.setImageViewResource(
+                            R.id.status_bar_play, ThemeUtils.getResourceDrawableNotification(3));
                 else
-                    views.setImageViewResource(R.id.status_bar_play,
-                            ThemeUtils.getResourceDrawableNotification(2));
+                    views.setImageViewResource(
+                            R.id.status_bar_play, ThemeUtils.getResourceDrawableNotification(2));
 
-                views.setImageViewResource(R.id.prev,
-                        ThemeUtils.getResourceDrawableNotification(4));
-                views.setImageViewResource(R.id.skip,
-                        ThemeUtils.getResourceDrawableNotification(1));
+                views.setImageViewResource(
+                        R.id.prev, ThemeUtils.getResourceDrawableNotification(4));
+                views.setImageViewResource(
+                        R.id.skip, ThemeUtils.getResourceDrawableNotification(1));
 
-                views.setTextColor(R.id.trackname,
-                        ThemeUtils.getTextColorNotification(this));
-                views.setTextColor(R.id.artistalbum,
-                        ThemeUtils.getTextColorNotification(this));
+                views.setTextColor(R.id.trackname, ThemeUtils.getTextColorNotification(this));
+                views.setTextColor(R.id.artistalbum, ThemeUtils.getTextColorNotification(this));
 
                 if (getAudioId() < 0) {
                     // streaming
@@ -2073,20 +1963,16 @@ public class MediaPlaybackService extends Service implements
                 } else {
                     String artist = getArtistName();
                     views.setTextViewText(R.id.trackname, getTrackName());
-                    if (artist == null
-                            || artist.equals(MediaStore.UNKNOWN_STRING)) {
+                    if (artist == null || artist.equals(MediaStore.UNKNOWN_STRING)) {
                         artist = getString(R.string.unknown_artist_name);
                     }
                     String album = getAlbumName();
-                    if (album == null
-                            || album.equals(MediaStore.UNKNOWN_STRING)) {
+                    if (album == null || album.equals(MediaStore.UNKNOWN_STRING)) {
                         album = getString(R.string.unknown_album_name);
                     }
 
-                    views.setTextViewText(
-                            R.id.artistalbum,
-                            getString(R.string.notification_artist_album,
-                                    artist, album));
+                    views.setTextViewText(R.id.artistalbum,
+                            getString(R.string.notification_artist_album, artist, album));
                 }
 
                 Notification status = new Notification();
@@ -2095,11 +1981,11 @@ public class MediaPlaybackService extends Service implements
                     status.flags |= Notification.FLAG_ONGOING_EVENT;
                 else
                     status.flags |= Notification.FLAG_AUTO_CANCEL;
-                status.icon = stop ? R.drawable.null_icon
-                        : R.drawable.now_playing_holo_dark;
+                status.icon = stop ? R.drawable.null_icon : R.drawable.now_playing_holo_dark;
                 status.contentIntent = PendingIntent.getActivity(this, 0,
                         new Intent("com.luca89.thundermusic.PLAYBACK_VIEWER")
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+                        0);
                 if (!stop) {
                     startForeground(PLAYBACKSERVICE_STATUS, status);
                 } else {
@@ -2111,7 +1997,6 @@ public class MediaPlaybackService extends Service implements
             }
     }
 
-
     /**
      * Expanded Media notification
      * based on bigpicture
@@ -2122,122 +2007,109 @@ public class MediaPlaybackService extends Service implements
      * @throws IllegalStateException
      */
     private void updateNotification1(boolean stop) throws IllegalStateException {
-
         if (mPlayer != null) {
-            ComponentName rec1 = new ComponentName(getPackageName(),
-                    MediaButtonIntentReceiver.class.getName());
+            ComponentName rec1 =
+                    new ComponentName(getPackageName(), MediaButtonIntentReceiver.class.getName());
             Intent mediaButtonIntent1 = new Intent(Intent.ACTION_MEDIA_BUTTON);
 
             mediaButtonIntent1.putExtra(CMDNOTIF, 1);
             mediaButtonIntent1.setComponent(rec1);
-            KeyEvent mediaKey1 = new KeyEvent(KeyEvent.ACTION_DOWN,
-                    KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+            KeyEvent mediaKey1 =
+                    new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
             mediaButtonIntent1.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey1);
-            PendingIntent mediaPendingIntent1 = PendingIntent.getBroadcast(
-                    getApplicationContext(), 1, mediaButtonIntent1,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent mediaPendingIntent1 = PendingIntent.getBroadcast(getApplicationContext(),
+                    1, mediaButtonIntent1, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            ComponentName rec2 = new ComponentName(getPackageName(),
-                    MediaButtonIntentReceiver.class.getName());
+            ComponentName rec2 =
+                    new ComponentName(getPackageName(), MediaButtonIntentReceiver.class.getName());
             Intent mediaButtonIntent2 = new Intent(Intent.ACTION_MEDIA_BUTTON);
 
             mediaButtonIntent2.putExtra(CMDNOTIF, 2);
             mediaButtonIntent2.setComponent(rec2);
-            KeyEvent mediaKey2 = new KeyEvent(KeyEvent.ACTION_DOWN,
-                    KeyEvent.KEYCODE_MEDIA_NEXT);
+            KeyEvent mediaKey2 = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT);
             mediaButtonIntent2.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey2);
-            PendingIntent mediaPendingIntent2 = PendingIntent.getBroadcast(
-                    getApplicationContext(), 2, mediaButtonIntent2,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent mediaPendingIntent2 = PendingIntent.getBroadcast(getApplicationContext(),
+                    2, mediaButtonIntent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            ComponentName rec3 = new ComponentName(getPackageName(),
-                    MediaButtonIntentReceiver.class.getName());
+            ComponentName rec3 =
+                    new ComponentName(getPackageName(), MediaButtonIntentReceiver.class.getName());
             Intent mediaButtonIntent3 = new Intent(Intent.ACTION_MEDIA_BUTTON);
 
             mediaButtonIntent3.putExtra(CMDNOTIF, 3);
             mediaButtonIntent3.setComponent(rec3);
-            KeyEvent mediaKey3 = new KeyEvent(KeyEvent.ACTION_DOWN,
-                    KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+            KeyEvent mediaKey3 =
+                    new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PREVIOUS);
             mediaButtonIntent3.putExtra(Intent.EXTRA_KEY_EVENT, mediaKey3);
-            PendingIntent mediaPendingIntent3 = PendingIntent.getBroadcast(
-                    getApplicationContext(), 3, mediaButtonIntent3,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent mediaPendingIntent3 = PendingIntent.getBroadcast(getApplicationContext(),
+                    3, mediaButtonIntent3, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            Bitmap tmp = ImageUtils.getArtworkQuick1(getBaseContext(),
-                    getAlbumId());
-            if (tmp == null)
-                tmp = ImageUtils.getDefaultArtwork(getBaseContext())
-                        .getBitmap();
+            Bitmap tmp = ImageUtils.getArtworkQuick1(getBaseContext(), getAlbumId());
+            if (tmp == null) tmp = ImageUtils.getDefaultArtwork(getBaseContext()).getBitmap();
 
-            RemoteViews mNotificationTemplate = new RemoteViews(
-                    this.getPackageName(), R.layout.notification_simple);
-            mNotificationTemplate.setOnClickPendingIntent(R.id.prev,
-                    mediaPendingIntent3);
-            mNotificationTemplate.setOnClickPendingIntent(R.id.skip,
-                    mediaPendingIntent2);
-            mNotificationTemplate.setOnClickPendingIntent(R.id.status_bar_play,
-                    mediaPendingIntent1);
-            mNotificationTemplate.setTextViewText(R.id.trackname,
-                    getTrackName());
-            mNotificationTemplate.setTextViewText(
-                    R.id.artistalbum,
-                    getString(R.string.notification_artist_album,
-                            getArtistName(), getAlbumName()));
+            RemoteViews mNotificationTemplate =
+                    new RemoteViews(this.getPackageName(), R.layout.notification_simple);
+            mNotificationTemplate.setOnClickPendingIntent(R.id.prev, mediaPendingIntent3);
+            mNotificationTemplate.setOnClickPendingIntent(R.id.skip, mediaPendingIntent2);
+            mNotificationTemplate.setOnClickPendingIntent(
+                    R.id.status_bar_play, mediaPendingIntent1);
+            mNotificationTemplate.setTextViewText(R.id.trackname, getTrackName());
+            mNotificationTemplate.setTextViewText(R.id.artistalbum,
+                    getString(R.string.notification_artist_album, getArtistName(), getAlbumName()));
             mNotificationTemplate.setImageViewBitmap(R.id.icon, tmp);
             if (stop)
-                mNotificationTemplate.setImageViewResource(R.id.status_bar_play,
-                        ThemeUtils.getResourceDrawableNotification(3));
+                mNotificationTemplate.setImageViewResource(
+                        R.id.status_bar_play, ThemeUtils.getResourceDrawableNotification(3));
             else
-                mNotificationTemplate.setImageViewResource(R.id.status_bar_play,
-                        ThemeUtils.getResourceDrawableNotification(2));
+                mNotificationTemplate.setImageViewResource(
+                        R.id.status_bar_play, ThemeUtils.getResourceDrawableNotification(2));
 
-            mNotificationTemplate.setImageViewResource(R.id.prev,
-                    ThemeUtils.getResourceDrawableNotification(4));
-            mNotificationTemplate.setImageViewResource(R.id.skip,
-                    ThemeUtils.getResourceDrawableNotification(1));
+            mNotificationTemplate.setImageViewResource(
+                    R.id.prev, ThemeUtils.getResourceDrawableNotification(4));
+            mNotificationTemplate.setImageViewResource(
+                    R.id.skip, ThemeUtils.getResourceDrawableNotification(1));
 
-            mNotificationTemplate.setTextColor(R.id.trackname,
-                    ThemeUtils.getTextColorNotification(this));
-            mNotificationTemplate.setTextColor(R.id.artistalbum,
-                    ThemeUtils.getTextColorNotification(this));
-                        
-            //NotificationCompat.MediaStyle style = new NotificationCompat.MediaStyle();
-            //style.setShowActionsInCompactView(0, 1, 2);
+            mNotificationTemplate.setTextColor(
+                    R.id.trackname, ThemeUtils.getTextColorNotification(this));
+            mNotificationTemplate.setTextColor(
+                    R.id.artistalbum, ThemeUtils.getTextColorNotification(this));
+
+            // NotificationCompat.MediaStyle style = new NotificationCompat.MediaStyle();
+            // style.setShowActionsInCompactView(0, 1, 2);
             status = new Notification.Builder(this)
-                    .setContentTitle(getTrackName())
-                    .setContentText(getAlbumName())
-                    .setSubText(getArtistName())
-                    .setPriority(
-                            !stop ? Notification.PRIORITY_MAX
-                                    : Notification.PRIORITY_LOW)
-                    .setOngoing(stop ? false : true)
-                    .setLargeIcon(tmp)
-                    .setContent(mNotificationTemplate)
-                    .setSmallIcon(R.drawable.now_playing_holo_dark)
-                    .addAction(ThemeUtils.getResourceDrawableNotification(4),
-                            ThemeUtils.getResourceTextNotification(4, getBaseContext()), mediaPendingIntent3)
-                    .addAction(
-                            stop ? ThemeUtils
-                                    .getResourceDrawableNotification(3)
-                                    : ThemeUtils
-                                    .getResourceDrawableNotification(2),
-                            stop ? ThemeUtils.getResourceTextNotification(3, getBaseContext()) 
-                            : ThemeUtils.getResourceTextNotification(2, getBaseContext()) , mediaPendingIntent1)
-                    .addAction(ThemeUtils.getResourceDrawableNotification(1),
-                            ThemeUtils.getResourceTextNotification(1, getBaseContext()), mediaPendingIntent2)
+                             .setContentTitle(getTrackName())
+                             .setContentText(getAlbumName())
+                             .setSubText(getArtistName())
+                             .setPriority(
+                                     !stop ? Notification.PRIORITY_MAX : Notification.PRIORITY_LOW)
+                             .setOngoing(stop ? false : true)
+                             .setLargeIcon(tmp)
+                             .setContent(mNotificationTemplate)
+                             .setSmallIcon(R.drawable.now_playing_holo_dark)
+                             .addAction(ThemeUtils.getResourceDrawableNotification(4),
+                                     ThemeUtils.getResourceTextNotification(4, getBaseContext()),
+                                     mediaPendingIntent3)
+                             .addAction(stop ? ThemeUtils.getResourceDrawableNotification(3)
+                                             : ThemeUtils.getResourceDrawableNotification(2),
+                                     stop ? ThemeUtils.getResourceTextNotification(
+                                                    3, getBaseContext())
+                                          : ThemeUtils.getResourceTextNotification(
+                                                    2, getBaseContext()),
+                                     mediaPendingIntent1)
+                             .addAction(ThemeUtils.getResourceDrawableNotification(1),
+                                     ThemeUtils.getResourceTextNotification(1, getBaseContext()),
+                                     mediaPendingIntent2)
 
-                    //.setStyle(style)
+                             //.setStyle(style)
 
-                    .setStyle(new Notification.BigPictureStyle()
-                               .bigPicture(tmp))
-                    
-                    .build();
+                             .setStyle(new Notification.BigPictureStyle().bigPicture(tmp))
 
-            status.icon = stop ? R.drawable.null_icon
-                    : R.drawable.now_playing_holo_dark;
+                             .build();
+
+            status.icon = stop ? R.drawable.null_icon : R.drawable.now_playing_holo_dark;
             status.contentIntent = PendingIntent.getActivity(this, 0,
                     new Intent("com.luca89.thundermusic.PLAYBACK_VIEWER")
-                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 0);
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+                    0);
             if (!stop) {
                 startForeground(PLAYBACKSERVICE_STATUS, status);
             } else {
@@ -2260,10 +2132,8 @@ public class MediaPlaybackService extends Service implements
             chatHead = new FrameLayout(this);
             final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                     WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.TYPE_PHONE,
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                    PixelFormat.TRANSLUCENT);
+                    WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.TYPE_PHONE,
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
 
             params.gravity = Gravity.TOP | Gravity.START;
             params.x = 0;
@@ -2271,13 +2141,13 @@ public class MediaPlaybackService extends Service implements
 
             windowManager.addView(chatHead, params);
 
-            LayoutInflater vi = (LayoutInflater) getApplicationContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
 
             View view = vi.inflate(R.layout.audio_player_popup, null);
-            chatHead.addView(view, 0, new ViewGroup.LayoutParams(
-                    WindowManager.LayoutParams.WRAP_CONTENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT));
+            chatHead.addView(view, 0,
+                    new ViewGroup.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
+                            WindowManager.LayoutParams.WRAP_CONTENT));
             mPlay = (ImageButton) chatHead.findViewById(R.id.control_play);
             mPrev = (ImageButton) chatHead.findViewById(R.id.control_prev);
             mNext = (ImageButton) chatHead.findViewById(R.id.control_next);
@@ -2326,10 +2196,8 @@ public class MediaPlaybackService extends Service implements
             mWidget.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     mWidget.setVisibility(View.GONE);
-                    startActivity(new Intent(
-                            "com.luca89.thundermusic.PLAYBACK_VIEWER")
-                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-
+                    startActivity(new Intent("com.luca89.thundermusic.PLAYBACK_VIEWER")
+                                          .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             });
             chatHead.setOnTouchListener(new View.OnTouchListener() {
@@ -2363,10 +2231,8 @@ public class MediaPlaybackService extends Service implements
                             break;
                         case MotionEvent.ACTION_MOVE:
                             if (moved == true) {
-                                paramsF.x = initialX
-                                        + (int) (event.getRawX() - initialTouchX);
-                                paramsF.y = initialY
-                                        + (int) (event.getRawY() - initialTouchY);
+                                paramsF.x = initialX + (int) (event.getRawX() - initialTouchX);
+                                paramsF.y = initialY + (int) (event.getRawY() - initialTouchY);
                                 windowManager.updateViewLayout(chatHead, paramsF);
                             }
                             break;
@@ -2377,15 +2243,13 @@ public class MediaPlaybackService extends Service implements
             setPauseButtonImage();
             updateMeta(this);
             if (!MusicUtils.startupPopup(this)) {
-                Toast.makeText(this, R.string.go_advanced_popup,
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.go_advanced_popup, Toast.LENGTH_LONG).show();
             }
         }
     }
 
     public void closePopup() {
-        if (chatHead != null && open == true)
-            windowManager.removeView(chatHead);
+        if (chatHead != null && open == true) windowManager.removeView(chatHead);
         open = false;
     }
 
@@ -2393,8 +2257,7 @@ public class MediaPlaybackService extends Service implements
         album.setText(getAlbumName());
         title.setText(getTrackName());
 
-        Bitmap bm = ImageUtils.getArtworkQuick1(
-                context.getApplicationContext(), getAlbumId());
+        Bitmap bm = ImageUtils.getArtworkQuick1(context.getApplicationContext(), getAlbumId());
         if (bm == null) {
             bm = ImageUtils.getDefaultArtwork(getBaseContext()).getBitmap();
         }
@@ -2445,7 +2308,6 @@ public class MediaPlaybackService extends Service implements
         public void exit() {
             mService.get().exit();
         }
-
 
         public void openOnline(String url) {
             mService.get().openOnline(url);
@@ -2619,7 +2481,6 @@ public class MediaPlaybackService extends Service implements
                     mHandler.sendEmptyMessage(TRACK_ENDED);
                     mHandler.sendEmptyMessage(RELEASE_WAKELOCK);
                 }
-
             }
         };
         private boolean mIsInitialized = false;
@@ -2635,10 +2496,9 @@ public class MediaPlaybackService extends Service implements
                         // while the
                         // service is still being restarted
                         mCurrentMediaPlayer = new MediaPlayer();
-                        mCurrentMediaPlayer.setWakeMode(MediaPlaybackService.this,
-                                PowerManager.PARTIAL_WAKE_LOCK);
-                        mHandler.sendMessageDelayed(
-                                mHandler.obtainMessage(SERVER_DIED), 2000);
+                        mCurrentMediaPlayer.setWakeMode(
+                                MediaPlaybackService.this, PowerManager.PARTIAL_WAKE_LOCK);
+                        mHandler.sendMessageDelayed(mHandler.obtainMessage(SERVER_DIED), 2000);
                         return true;
                     default:
                         Log.d("MultiPlayer", "Error: " + what + "," + extra);
@@ -2653,18 +2513,16 @@ public class MediaPlaybackService extends Service implements
         };
 
         public MultiPlayer() {
-            mCurrentMediaPlayer.setWakeMode(MediaPlaybackService.this,
-                    PowerManager.PARTIAL_WAKE_LOCK);
+            mCurrentMediaPlayer.setWakeMode(
+                    MediaPlaybackService.this, PowerManager.PARTIAL_WAKE_LOCK);
         }
 
         public void setOnInfoListener() {
-            mCurrentMediaPlayer
-                    .setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+            mCurrentMediaPlayer.setOnBufferingUpdateListener(
+                    new MediaPlayer.OnBufferingUpdateListener() {
 
                         @Override
-                        public void onBufferingUpdate(MediaPlayer mp,
-                                                      int percent) {
-
+                        public void onBufferingUpdate(MediaPlayer mp, int percent) {
                             bufferPercent = (percent * 10);
                             notifyChange(UPDATE_BUFFERING);
                         }
@@ -2687,8 +2545,7 @@ public class MediaPlaybackService extends Service implements
                 mOnlineDuration = 0;
                 mCurrentMediaPlayer.reset();
                 if (path.startsWith("content://")) {
-                    mCurrentMediaPlayer.setDataSource(
-                            MediaPlaybackService.this, Uri.parse(path));
+                    mCurrentMediaPlayer.setDataSource(MediaPlaybackService.this, Uri.parse(path));
                 } else {
                     mCurrentMediaPlayer.setDataSource(path);
                 }
@@ -2740,8 +2597,7 @@ public class MediaPlaybackService extends Service implements
         }
 
         public void pause() {
-            if (mCurrentMediaPlayer.isPlaying())
-                mCurrentMediaPlayer.pause();
+            if (mCurrentMediaPlayer.isPlaying()) mCurrentMediaPlayer.pause();
         }
 
         public void setHandler(Handler handler) {
@@ -2768,8 +2624,6 @@ public class MediaPlaybackService extends Service implements
         public int getAudioSessionId() {
             return mCurrentMediaPlayer.getAudioSessionId();
         }
-
-
     }
 
     /**
@@ -2777,18 +2631,15 @@ public class MediaPlaybackService extends Service implements
      * retrieve the correct link to play
      */
     private class ShoutCastPlayTask extends AsyncTask<Boolean, Void, String> {
-
         /**
          * Constructor
          */
-        public ShoutCastPlayTask() {
-        }
+        public ShoutCastPlayTask() {}
 
         @Override
         protected String doInBackground(Boolean... arg0) {
             Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-            return OnlineRadioSearchTask.getURLfromPLS(mOnlineTrack
-                    .getUrl());
+            return OnlineRadioSearchTask.getURLfromPLS(mOnlineTrack.getUrl());
         }
 
         @Override
@@ -2798,11 +2649,9 @@ public class MediaPlaybackService extends Service implements
             } else
                 gotoNext(true);
         }
-
     }
 
     private class BandcampPlayTask extends AsyncTask<Boolean, Void, String> {
-
         private String mVideoUrl;
 
         /**
@@ -2815,13 +2664,14 @@ public class MediaPlaybackService extends Service implements
         @Override
         protected String doInBackground(Boolean... arg0) {
             Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-            //return mOnlineTrack.getUrl();
+            // return mOnlineTrack.getUrl();
             return BandcampLinkRetriever.getBCLink(mOnlineTrack.getLink());
         }
 
         @Override
         protected void onPostExecute(String result) {
-            if (mVideoUrl.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null && !result.isEmpty()) {
+            if (mVideoUrl.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null
+                    && !result.isEmpty()) {
                 setVideoUrl(result);
             } else
                 gotoNext(true);
@@ -2829,7 +2679,6 @@ public class MediaPlaybackService extends Service implements
     }
 
     private class ArchiveOrgPlayTask extends AsyncTask<Boolean, Void, String> {
-
         private String mVideoId;
 
         /**
@@ -2842,13 +2691,14 @@ public class MediaPlaybackService extends Service implements
         @Override
         protected String doInBackground(Boolean... arg0) {
             Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-            //return mOnlineTrack.getUrl();
+            // return mOnlineTrack.getUrl();
             return ArchiveOrgLinkRetriever.getARLink(mOnlineTrack.getLink());
         }
 
         @Override
         protected void onPostExecute(String result) {
-            if (mVideoId.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null && !result.isEmpty()) {
+            if (mVideoId.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null
+                    && !result.isEmpty()) {
                 setVideoUrl(result);
             } else
                 gotoNext(true);
@@ -2856,7 +2706,6 @@ public class MediaPlaybackService extends Service implements
     }
 
     private class YoutubePlayTask extends AsyncTask<Boolean, Void, String> {
-
         private String mVideoUrl;
 
         /**
@@ -2869,13 +2718,14 @@ public class MediaPlaybackService extends Service implements
         @Override
         protected String doInBackground(Boolean... arg0) {
             Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-            //return mOnlineTrack.getUrl();
+            // return mOnlineTrack.getUrl();
             return YoutubeLinkRetriever.getYtLink(mOnlineTrack.getLink());
         }
 
         @Override
         protected void onPostExecute(String result) {
-            if (mVideoUrl.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null && !result.isEmpty()) {
+            if (mVideoUrl.equalsIgnoreCase(mOnlineTrack.getLink()) && result != null
+                    && !result.isEmpty()) {
                 setVideoUrl(result);
             } else
                 gotoNext(true);

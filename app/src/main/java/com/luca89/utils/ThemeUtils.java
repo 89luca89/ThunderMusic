@@ -44,7 +44,6 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
  * Created by luca-linux on 6/3/16.
  */
 public class ThemeUtils {
-
     /**
      * Manipulate the application theme:
      * Based on the corresponding theme (1-7) this method will:
@@ -57,8 +56,8 @@ public class ThemeUtils {
      * @param context
      */
     public static void getAppTheme(Activity context) {
-        int Theme = Integer.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(context).getString(
+        int Theme =
+                Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
                         PreferencesActivity.KEY_THEME, "3"));
         Drawable mActionBarBackgroundDrawable;
 
@@ -69,62 +68,49 @@ public class ThemeUtils {
         } else if (Theme == 1 || Theme == 7) {
             context.setTheme(R.style.CustomTheme);
 
-            context.getActionBar().setBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setSplitBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setStackedBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
+            context.getActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setSplitBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setStackedBackgroundDrawable(mActionBarBackgroundDrawable);
 
         } else {
             context.setTheme(R.style.ThunderMusic);
 
-            context.getActionBar().setBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setSplitBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setStackedBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-
+            context.getActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setSplitBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setStackedBackgroundDrawable(mActionBarBackgroundDrawable);
         }
         context.getActionBar().setIcon(R.drawable.ic_action_back);
 
-            ImageView view = (ImageView) context.findViewById(android.R.id.home);
+        ImageView view = (ImageView) context.findViewById(android.R.id.home);
 
-            int paddingRight;
-            paddingRight = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 22, context.getResources()
-                            .getDisplayMetrics());
+        int paddingRight;
+        paddingRight = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 22, context.getResources().getDisplayMetrics());
 
-            int paddingLeft = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 8, context.getResources()
-                            .getDisplayMetrics());
-            view.setPadding(paddingLeft, 0, paddingRight, 0);
-        
+        int paddingLeft = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 8, context.getResources().getDisplayMetrics());
+        view.setPadding(paddingLeft, 0, paddingRight, 0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SystemBarTintManager tintManager = new SystemBarTintManager(context);
             tintManager.setStatusBarTintEnabled(true);
             if (Theme < 6)
-                tintManager.setTintColor(context.getResources().getColor(
-                        getThemeColor(context, Theme)));
+                tintManager.setTintColor(
+                        context.getResources().getColor(getThemeColor(context, Theme)));
             else
                 tintManager.setTintColor(getThemeColor(context, Theme));
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
             if (Theme < 6)
                 context.setTaskDescription(new ActivityManager.TaskDescription(
                         context.getString(R.string.musicbrowserlabel),
-                        BitmapFactory.decodeResource(context.getResources(),
-                                R.drawable.app_music), context.getResources()
-                        .getColor(getThemeColor(context, Theme))));
+                        BitmapFactory.decodeResource(context.getResources(), R.drawable.app_music),
+                        context.getResources().getColor(getThemeColor(context, Theme))));
             else
                 context.setTaskDescription(new ActivityManager.TaskDescription(
                         context.getString(R.string.musicbrowserlabel),
-                        BitmapFactory.decodeResource(context.getResources(),
-                                R.drawable.app_music), getThemeColor(context,
-                        Theme)));
+                        BitmapFactory.decodeResource(context.getResources(), R.drawable.app_music),
+                        getThemeColor(context, Theme)));
 
             Window window = context.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -147,11 +133,10 @@ public class ThemeUtils {
      *
      * @param context
      */
-    public static Drawable getAppThemeExpanded(final Activity context,
-                                               Drawable mActionBarBackgroundDrawable) {
-
-        int Theme = Integer.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(context).getString(
+    public static Drawable getAppThemeExpanded(
+            final Activity context, Drawable mActionBarBackgroundDrawable) {
+        int Theme =
+                Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
                         PreferencesActivity.KEY_THEME, "3"));
 
         mActionBarBackgroundDrawable = getThemeDrawable(context, Theme);
@@ -160,17 +145,12 @@ public class ThemeUtils {
             context.setTheme(R.style.BlackTheme55);
         } else if (Theme == 1 || Theme == 7) {
             context.setTheme(R.style.CustomTheme55);
-            context.getActionBar().setSplitBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setStackedBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
+            context.getActionBar().setSplitBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setStackedBackgroundDrawable(mActionBarBackgroundDrawable);
         } else {
             context.setTheme(R.style.ThunderMusic55);
-            context.getActionBar().setSplitBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-            context.getActionBar().setStackedBackgroundDrawable(
-                    mActionBarBackgroundDrawable);
-
+            context.getActionBar().setSplitBackgroundDrawable(mActionBarBackgroundDrawable);
+            context.getActionBar().setStackedBackgroundDrawable(mActionBarBackgroundDrawable);
         }
 
         ImageView view = (ImageView) context.findViewById(android.R.id.home);
@@ -178,39 +158,31 @@ public class ThemeUtils {
 
         if (context.getClass() == MediaPlaybackActivity.class) {
             paddingRight = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 16, context.getResources()
-                            .getDisplayMetrics());
+                    TypedValue.COMPLEX_UNIT_DIP, 16, context.getResources().getDisplayMetrics());
         } else {
-
             paddingRight = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 24, context.getResources()
-                            .getDisplayMetrics());
+                    TypedValue.COMPLEX_UNIT_DIP, 24, context.getResources().getDisplayMetrics());
         }
 
         int paddingLeft = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 21, context.getResources()
-                        .getDisplayMetrics());
+                TypedValue.COMPLEX_UNIT_DIP, 21, context.getResources().getDisplayMetrics());
         view.setPadding(paddingLeft, 0, paddingRight, 0);
 
         mActionBarBackgroundDrawable.setAlpha(0);
         context.getActionBar().setIcon(R.drawable.ic_action_back);
-        context.getActionBar().setBackgroundDrawable(
-                mActionBarBackgroundDrawable);
+        context.getActionBar().setBackgroundDrawable(mActionBarBackgroundDrawable);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
             if (Theme < 6)
                 context.setTaskDescription(new ActivityManager.TaskDescription(
                         context.getString(R.string.musicbrowserlabel),
-                        BitmapFactory.decodeResource(context.getResources(),
-                                R.drawable.app_music), context.getResources()
-                        .getColor(getThemeColor(context, Theme))));
+                        BitmapFactory.decodeResource(context.getResources(), R.drawable.app_music),
+                        context.getResources().getColor(getThemeColor(context, Theme))));
             else
                 context.setTaskDescription(new ActivityManager.TaskDescription(
                         context.getString(R.string.musicbrowserlabel),
-                        BitmapFactory.decodeResource(context.getResources(),
-                                R.drawable.app_music), getThemeColor(context,
-                        Theme)));
+                        BitmapFactory.decodeResource(context.getResources(), R.drawable.app_music),
+                        getThemeColor(context, Theme)));
         }
         return mActionBarBackgroundDrawable;
     }
@@ -222,8 +194,8 @@ public class ThemeUtils {
      * @param context
      */
     public static int getAppTheme2(Context context) {
-        int Theme = Integer.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(context).getString(
+        int Theme =
+                Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
                         PreferencesActivity.KEY_THEME, "3"));
         if (Theme != 7 && Theme != 1 && Theme != 4)
             return 3;
@@ -239,8 +211,8 @@ public class ThemeUtils {
      * @return
      */
     public static int getAppTheme3(Context context) {
-        return Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(
-                context).getString(PreferencesActivity.KEY_THEME, "3"));
+        return Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
+                PreferencesActivity.KEY_THEME, "3"));
     }
 
     /**
@@ -249,8 +221,8 @@ public class ThemeUtils {
      * @param context
      */
     public static void getBarTheme(Context context, View view1) {
-        int Theme = Integer.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(context).getString(
+        int Theme =
+                Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
                         PreferencesActivity.KEY_THEME, "3"));
         if (Theme == 1 || Theme == 7) {
             view1.setBackgroundResource(R.color.background_dark);
@@ -267,8 +239,8 @@ public class ThemeUtils {
      * @param lv
      */
     public static void getNowDrawerTheme(Activity context, View lv) {
-        int Theme = Integer.valueOf(PreferenceManager
-                .getDefaultSharedPreferences(context).getString(
+        int Theme =
+                Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(
                         PreferencesActivity.KEY_THEME, "3"));
         if (Theme == 1 || Theme == 7) {
             lv.setBackgroundResource(R.color.bar_background);
@@ -277,8 +249,6 @@ public class ThemeUtils {
         } else {
             lv.setBackgroundResource(android.R.color.white);
         }
-
-
     }
 
     /**
@@ -302,11 +272,11 @@ public class ThemeUtils {
             case 5:
                 return android.R.color.black;
             case 6:
-                return PreferenceManager.getDefaultSharedPreferences(context)
-                        .getInt(PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
+                return PreferenceManager.getDefaultSharedPreferences(context).getInt(
+                        PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
             case 7:
-                return PreferenceManager.getDefaultSharedPreferences(context)
-                        .getInt(PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
+                return PreferenceManager.getDefaultSharedPreferences(context).getInt(
+                        PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
         }
         return android.R.color.transparent;
     }
@@ -322,34 +292,27 @@ public class ThemeUtils {
     public static Drawable getThemeDrawable(Context context, int Theme) {
         switch (Theme) {
             case 3:
-                return new ColorDrawable(context.getResources().getColor(
-                        R.color.google_dark_blue));
+                return new ColorDrawable(context.getResources().getColor(R.color.google_dark_blue));
             case 1:
-                return new ColorDrawable(context.getResources().getColor(
-                        R.color.google_dark_blue));
+                return new ColorDrawable(context.getResources().getColor(R.color.google_dark_blue));
             case 4:
-                return new ColorDrawable(context.getResources().getColor(
-                        android.R.color.black));
+                return new ColorDrawable(context.getResources().getColor(android.R.color.black));
             case 5:
-                return new ColorDrawable(context.getResources().getColor(
-                        android.R.color.black));
+                return new ColorDrawable(context.getResources().getColor(android.R.color.black));
             case 6:
                 return new ColorDrawable(Color.parseColor("#"
-                        + Integer.toHexString(
-                        PreferenceManager.getDefaultSharedPreferences(
-                                context).getInt(
-                                PreferencesActivity.KEY_CUSTOM_THEME,
-                                0xff4285f4)).substring(2)));
+                        + Integer.toHexString(PreferenceManager.getDefaultSharedPreferences(context)
+                                                      .getInt(PreferencesActivity.KEY_CUSTOM_THEME,
+                                                              0xff4285f4))
+                                  .substring(2)));
             case 7:
                 return new ColorDrawable(Color.parseColor("#"
-                        + Integer.toHexString(
-                        PreferenceManager.getDefaultSharedPreferences(
-                                context).getInt(
-                                PreferencesActivity.KEY_CUSTOM_THEME,
-                                0xff4285f4)).substring(2)));
+                        + Integer.toHexString(PreferenceManager.getDefaultSharedPreferences(context)
+                                                      .getInt(PreferencesActivity.KEY_CUSTOM_THEME,
+                                                              0xff4285f4))
+                                  .substring(2)));
         }
-        return new ColorDrawable(context.getResources().getColor(
-                android.R.color.transparent));
+        return new ColorDrawable(context.getResources().getColor(android.R.color.transparent));
     }
 
     /**
@@ -434,18 +397,18 @@ public class ThemeUtils {
             case 3:
                 return R.color.google_dark_blue_fab;
             case 6:
-                return PreferenceManager.getDefaultSharedPreferences(context)
-                        .getInt(PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
+                return PreferenceManager.getDefaultSharedPreferences(context).getInt(
+                        PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
             case 7:
-                return PreferenceManager.getDefaultSharedPreferences(context)
-                        .getInt(PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
+                return PreferenceManager.getDefaultSharedPreferences(context).getInt(
+                        PreferencesActivity.KEY_CUSTOM_THEME, 0xff4285f4);
         }
         return R.color.holo;
     }
 
     public static Drawable colorizeDrawable(Drawable drawable, Context context) {
-        return colorizeDrawable(drawable, context,
-                getDrawableColor(getAppTheme3(context), context));
+        return colorizeDrawable(
+                drawable, context, getDrawableColor(getAppTheme3(context), context));
     }
 
     /**
@@ -455,8 +418,7 @@ public class ThemeUtils {
      * @param context
      * @return
      */
-    public static Drawable colorizeLockDrawable(Drawable drawable,
-                                                Context context) {
+    public static Drawable colorizeLockDrawable(Drawable drawable, Context context) {
         int color = context.getResources().getColor(android.R.color.white);
         drawable.setColorFilter(color, android.graphics.PorterDuff.Mode.SRC_IN);
         return drawable;
@@ -473,8 +435,7 @@ public class ThemeUtils {
      * @param colorRes
      * @return
      */
-    public static Drawable colorizeDrawable(Drawable drawable, Context context,
-                                            int colorRes) {
+    public static Drawable colorizeDrawable(Drawable drawable, Context context, int colorRes) {
         int color;
         if (getAppTheme3(context) < 6)
             color = context.getResources().getColor(colorRes);
@@ -522,8 +483,7 @@ public class ThemeUtils {
         return draw;
     }
 
-    public static Drawable colorizeResourceDrawableInvert(int mResId,
-                                                          Context context) {
+    public static Drawable colorizeResourceDrawableInvert(int mResId, Context context) {
         Drawable draw = context.getResources().getDrawable(mResId);
         // Add the second layer to the transiation drawable
         // Assuming "color" is your target color
@@ -537,15 +497,32 @@ public class ThemeUtils {
         float g = Color.green(color) / 255f;
         float b = Color.blue(color) / 255f;
 
-        ColorMatrix cm = new ColorMatrix(new float[]{
+        ColorMatrix cm = new ColorMatrix(new float[] {
                 // Change red channel
-                r, 0, 0, 0, 0,
+                r,
+                0,
+                0,
+                0,
+                0,
                 // Change green channel
-                0, g, 0, 0, 0,
+                0,
+                g,
+                0,
+                0,
+                0,
                 // Change blue channel
-                0, 0, b, 0, 0,
+                0,
+                0,
+                b,
+                0,
+                0,
                 // Keep alpha channel
-                0, 0, 0, 1, 0,});
+                0,
+                0,
+                0,
+                1,
+                0,
+        });
         ColorMatrixColorFilter cf = new ColorMatrixColorFilter(cm);
         draw.setColorFilter(cf);
         return draw;
