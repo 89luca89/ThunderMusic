@@ -19,6 +19,8 @@
 import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.greensopinion.gradle-android-eclipse'
+apply plugin: 'eclipse'
 
 android {
     compileSdkVersion 25
@@ -55,4 +57,22 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'joda-time:joda-time:2.9.4'
     compile 'ch.acra:acra:4.9.0'
+}
+
+buildscript {
+    repositories {
+        maven {
+          url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+      classpath "gradle.plugin.com.greensopinion.gradle-android-eclipse:android-eclipse:1.0"
+    }
+}
+
+eclipse {
+  classpath {
+    plusConfigurations += [ configurations.compile, configurations.testCompile ]
+    downloadSources = true
+  }
 }
