@@ -23,14 +23,14 @@ apply plugin: 'com.greensopinion.gradle-android-eclipse'
 apply plugin: 'eclipse'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 23
     buildToolsVersion "25.0.1"
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.luca89.thundermusic"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 23
         versionName "build-${buildTime()}"
     }
     buildTypes {
@@ -49,6 +49,7 @@ def buildTime() {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: '/home/luca-linux/Desktop/android-sdk-linux/platforms/android-26', include: ['*.jar'])
     compile 'com.android.support:support-v4:25.0.1'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'org.mozilla:rhino:1.7.7'
