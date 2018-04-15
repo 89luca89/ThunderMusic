@@ -4,6 +4,7 @@
 	<classpathentry output="bin" kind="src" path="build/generated/source/r/debug"/>
 	<classpathentry output="bin" kind="src" path="build/generated/source/buildConfig/debug"/>
 	<classpathentry output="bin" kind="src" path="build/generated/source/aidl/debug"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry path="bin" kind="output"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
 	<classpathentry sourcepath="/home/luca-linux/.gradle/caches/modules-2/files-2.1/ch.acra/acra/4.9.0/6cb6e06f08d27436b80917212856b4e5a3eb18fb/acra-4.9.0-sources.jar" kind="lib" path="/home/luca-linux/Projects/ThunderMusic/app/build/exploded-aars/acra-4.9.0.aar/classes.jar"/>
