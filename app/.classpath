@@ -6,6 +6,5 @@
 	<classpathentry kind="src" output="bin" path="build/generated/source/aidl/debug"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-    <classpathentry kind="var" path="/home/luca-linux/Desktop/android-sdk-linux/platforms/android-23/android.jar" sourcepath="/home/luca-linux/Desktop/android-sdk-linux/sources/android-23"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

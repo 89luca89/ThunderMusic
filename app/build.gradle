@@ -49,7 +49,7 @@ def buildTime() {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile fileTree(dir: '/home/luca-linux/Desktop/android-sdk-linux/platforms/android-26', include: ['*.jar'])
+    compile fileTree(dir: '/home/luca-linux/Programs/android-sdk-linux/platforms/android-23', include: ['*.jar'])
     compile 'com.android.support:support-v4:25.0.1'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'org.mozilla:rhino:1.7.7'
